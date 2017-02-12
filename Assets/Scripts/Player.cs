@@ -61,19 +61,16 @@ public class Player : MonoBehaviour
 				{
 					velocity = normal * wjOff.z;
 					velocity.y = wjOff.y;
-					Debug.Log("OFF");
 				}
 				else if (Vector3.Angle(normal, input) < 90)//Backward movement
 				{
 					velocity = normal * wjLeap.z;
 					velocity.y = wjLeap.y;
-					Debug.Log("LEAP");
 				}
 				else//forward movement
 				{
-					velocity = (normal + input) / 2f * wjClimb.z;
+					velocity = (normal + input).normalized * wjClimb.z;
 					velocity.y = wjClimb.y;
-					Debug.Log("CLIMB");
 				}
 			}
 		}
