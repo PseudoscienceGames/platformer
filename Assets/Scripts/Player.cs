@@ -17,7 +17,9 @@ public class Player : MonoBehaviour
 	public float wallSpeed = 3;
 	public float wallStickTime;
 	public float runMultiplier;
+	public float jumpLeeway;
 
+	float timeSinceGrounded = 0;
 	float timeToWallUnstick;
 	float gravity;
 	float maxJumpVelocity;
@@ -43,8 +45,13 @@ public class Player : MonoBehaviour
 		minJumpVelocity = Mathf.Sqrt(2 * Mathf.Abs(gravity) * minJumpHeight);
 		//===================================================================
 		if (pc.isGrounded)
+		{
+			timeSinceGrounded = 0;
 			velocity.y = -0.1f;
-		Vector3 input = Camera.main.transform.root.TransformDirection(new Vector3(Input.GetAxisRaw("Horizontal") * moveSpeed, 0, Input.GetAxisRaw("Vertical") * moveSpeed));
+		}
+		else
+			timeSinceGrounded += Time.deltaTime;
+		Vector3 input = Camera.main.transform.root.TransformDirection(new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")) * moveSpeed);
 		if (Input.GetButton("Run"))
 			input *= runMultiplier;
 		Vector3 target = input;
@@ -52,8 +59,11 @@ public class Player : MonoBehaviour
 			timeToWallUnstick -= Time.deltaTime;
 		if (Input.GetButtonDown("Jump"))
 		{
-			if (pc.isGrounded)
+			if (pc.isGrounded || timeSinceGrounded <= jumpLeeway)
+			{
 				velocity.y = maxJumpVelocity;
+				timeSinceGrounded = jumpLeeway + 1;
+			}
 			else if (timeToWallUnstick > 0)
 			{
 				timeToWallUnstick = 0;
@@ -64,17 +74,27 @@ public class Player : MonoBehaviour
 				}
 				else if (Vector3.Angle(normal, input) < 90)//Backward movement
 				{
-					velocity = normal * wjLeap.z;
+					velocity = (normal + input).normalized * wjLeap.z;
 					velocity.y = wjLeap.y;
 				}
 				else//forward movement
 				{
-					velocity = (normal + input).normalized * wjClimb.z;
+					velocity = normal * wjClimb.z;//(normal + input).normalized * wjClimb.z;
 					velocity.y = wjClimb.y;
 				}
 			}
 		}
-		if(Input.GetButtonUp("Jump") && velocity.y > minJumpVelocity)
+		//if (timeToWallUnstick > 0 && velocity.y < 0)
+		//{
+		//	Debug.Log(input + " " + normal);
+		//	//velocity.x = -normal.x + (input.x / (moveSpeed / 2f));
+		//	//velocity.z = -normal.z + (input.z / (moveSpeed / 2f));
+		//	float oldY = velocity.y;
+		//	velocity = Vector3.ProjectOnPlane(new Vector3(input.x, velocity.y, input.z), normal);
+		//	velocity = ((velocity.normalized * 2) - normal.normalized).normalized * velocity.magnitude;
+		//	velocity.y = oldY;
+		//}
+		if (Input.GetButtonUp("Jump") && velocity.y > minJumpVelocity)
 				velocity.y = minJumpVelocity;
 		
 		target.y = velocity.y;
