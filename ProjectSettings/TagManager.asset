@@ -13,6 +13,8 @@ TagManager:
   - BombPickup
   - ExplosionFX
   - HealthBar
+  - Lethal
+  - Spawn
   layers:
   - Default
   - TransparentFX

@@ -61,7 +61,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4117883375034088
 Transform:
   m_ObjectHideFlags: 1
@@ -173,7 +173,7 @@ TrailRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Time: 1
+  m_Time: 0.25
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 0.5
@@ -269,7 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52ab03c21c8ee77428d667befeb52d18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 15
+  moveSpeed: 22.5
   maxJumpHeight: 5
   minJumpHeight: 1
   timeToJumpApex: 0.4
@@ -278,12 +278,12 @@ MonoBehaviour:
   wjSmooth: 0.2
   wjOff: {x: 0, y: 7, z: 9.5}
   wjClimb: {x: 0, y: 25, z: 7}
-  wjLeap: {x: 0, y: 25, z: 25}
+  wjLeap: {x: 0, y: 25, z: 10}
   wallSpeed: 8
   wallStickTime: 0.1
-  runMultiplier: 1.5
   jumpLeeway: 0.1
   velocity: {x: 0, y: 0, z: 0}
+  deadPlayer: {fileID: 1914912337831550, guid: c35a7930f027e2845b9feaa4fb81fa73, type: 2}
 --- !u!143 &143478560892775622
 CharacterController:
   m_ObjectHideFlags: 1
@@ -294,10 +294,10 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 1.25
-  m_Radius: 0.5
+  m_Height: 0.625
+  m_Radius: 0.25
   m_SlopeLimit: 15
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.6, z: 0}
+  m_Center: {x: 0, y: 0.3125, z: 0}
