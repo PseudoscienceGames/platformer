@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
 
 	float timeSinceGrounded = 0;
 	float timeToWallUnstick;
-	float gravity;
+	public float gravity;
 	float maxJumpVelocity;
 	float minJumpVelocity;
 	Vector3 smoothdamp;
@@ -36,6 +36,7 @@ public class Player : MonoBehaviour
 		gravity = -(2 * maxJumpHeight) / Mathf.Pow(timeToJumpApex, 2);
 		maxJumpVelocity = Mathf.Abs(gravity * timeToJumpApex);
 		minJumpVelocity = Mathf.Sqrt(2 * Mathf.Abs(gravity) * minJumpHeight);
+		GameObject.Find("Timer").GetComponent<Timer>().Reset();
 	}
 
 	void Update()
@@ -78,6 +79,7 @@ public class Player : MonoBehaviour
 						velocity = normal * wjClimb.z;//(normal + input).normalized * wjClimb.z;
 						velocity.y = wjClimb.y;
 					}
+					//velocity *= gravity / -62.5f;
 				}
 			}
 			if (Input.GetButtonUp("Jump") && velocity.y > minJumpVelocity)
@@ -100,6 +102,15 @@ public class Player : MonoBehaviour
 	{
 		if (hit.gameObject.tag == "Lethal")
 			Die();
+		if (hit.gameObject.tag == "Goal")
+		{
+			Win();
+			hit.gameObject.GetComponent<Goal>().Load();
+		}
+		if (hit.gameObject.tag == "LevelIcon")
+		{
+			hit.gameObject.GetComponent<LevelIcon>().Load();
+		}
 		normal = hit.normal;
 		if (!pc.isGrounded && hit.normal.y < 0.1f && hit.normal.y > -0.5f)
 		{
@@ -137,5 +148,10 @@ public class Player : MonoBehaviour
 		GameObject.Find("Timer").GetComponent<Timer>().Reset();
 		isAlive = true;
 		transform.FindChild("Sphere").gameObject.SetActive(true);
+	}
+	void Win()
+	{
+		GameObject.Find("Timer").GetComponent<Timer>().Stop();
+		isAlive = false;
 	}
 }

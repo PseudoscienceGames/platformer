@@ -5,14 +5,21 @@ using UnityEngine;
 public class Timer : MonoBehaviour
 {
 	public float time;
+	bool count = false;
 
-	void Update()
+	void LateUpdate()
 	{
-		time += Time.deltaTime;
+		if(count)
+			time += Time.deltaTime;
 	}
 
 	public void Reset()
 	{
 		time = 0;
+		count = true;
+	}
+	public void Stop()
+	{
+		count = false;
 	}
 }
