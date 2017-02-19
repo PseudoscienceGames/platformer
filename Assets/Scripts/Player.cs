@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
 	CharacterController pc;
 	bool isAlive = true;
 	public GameObject deadPlayer;
+	public Animator anim;
 
 	void Start()
 	{
@@ -47,9 +48,13 @@ public class Player : MonoBehaviour
 			{
 				timeSinceGrounded = 0;
 				velocity.y = -0.1f;
+				anim.SetBool("isJumping", false);
 			}
 			else
+			{
 				timeSinceGrounded += Time.deltaTime;
+				anim.SetBool("isJumping", true);
+			}
 			Vector3 input = Camera.main.transform.root.TransformDirection(new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")) * moveSpeed);
 			Vector3 target = input;
 			if (timeToWallUnstick > 0)
@@ -58,11 +63,13 @@ public class Player : MonoBehaviour
 			{
 				if (pc.isGrounded || timeSinceGrounded <= jumpLeeway)
 				{
+					anim.SetBool("isJumping", true);
 					velocity.y = maxJumpVelocity;
 					timeSinceGrounded = jumpLeeway + 1;
 				}
 				else if (timeToWallUnstick > 0)
 				{
+					anim.SetTrigger("WallJump");
 					timeToWallUnstick = 0;
 					if (input.x == 0 && input.z == 0)//no movement
 					{
@@ -94,6 +101,16 @@ public class Player : MonoBehaviour
 			velocity = Vector3.SmoothDamp(velocity, target, ref smoothdamp, smoothSpeed);
 			velocity.y += gravity * Time.deltaTime;
 			transform.LookAt(new Vector3(transform.position.x + velocity.x, transform.position.y, transform.position.z + velocity.z));
+			if ((new Vector3(velocity.x, 0, velocity.z)).magnitude > 0.05f)
+			{
+				anim.SetBool("isRunning", true);
+				anim.SetFloat("Speed", (new Vector3(velocity.x, 0, velocity.z)).magnitude);
+			}
+			else
+			{
+				anim.SetBool("isRunning", false);
+				anim.SetFloat("Speed", 1);
+			}
 			pc.Move(velocity * Time.deltaTime);
 		}
 	}
@@ -133,7 +150,7 @@ public class Player : MonoBehaviour
 
 	void Explode()
 	{
-		transform.FindChild("Sphere").gameObject.SetActive(false);
+		transform.FindChild("Char").gameObject.SetActive(false);
 		velocity = Vector3.zero;
 		GameObject dp = Instantiate(deadPlayer, transform.position, transform.rotation) as GameObject;
 		foreach(Rigidbody rb in dp.GetComponentsInChildren<Rigidbody>())
@@ -147,7 +164,7 @@ public class Player : MonoBehaviour
 		transform.position = GameObject.FindGameObjectWithTag("Spawn").transform.position;
 		GameObject.Find("Timer").GetComponent<Timer>().Reset();
 		isAlive = true;
-		transform.FindChild("Sphere").gameObject.SetActive(true);
+		transform.FindChild("Char").gameObject.SetActive(true);
 	}
 	void Win()
 	{

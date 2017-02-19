@@ -50,6 +50,12 @@ ModelImporter:
     4300000: Sphere
     7400000: metarig|Run
     7400002: metarig|Idle
+    7400004: metarig|Falling.001
+    7400006: metarig|Falling.0010
+    7400008: metarig|Falling.0011
+    7400010: metarig|Jump
+    7400012: metarig|Jump0
+    7400014: metarig|Falling
     9500000: //RootNode
     13700000: Sphere
   materials:
@@ -146,6 +152,146 @@ ModelImporter:
     - serializedVersion: 16
       name: metarig|Run
       takeName: metarig|Run
+      firstFrame: 0
+      lastFrame: 32
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: metarig
+        weight: 1
+      - path: metarig/Base
+        weight: 1
+      - path: metarig/Base/hips
+        weight: 1
+      - path: metarig/Base/hips/spine
+        weight: 1
+      - path: metarig/Base/hips/spine/spine_end
+        weight: 1
+      - path: metarig/Base/thigh.L
+        weight: 1
+      - path: metarig/Base/thigh.L/shin.L
+        weight: 1
+      - path: metarig/Base/thigh.L/shin.L/foot.L
+        weight: 1
+      - path: metarig/Base/thigh.L/shin.L/foot.L/toe.L
+        weight: 1
+      - path: metarig/Base/thigh.L/shin.L/foot.L/toe.L/toe.L_end
+        weight: 1
+      - path: metarig/Base/thigh.L/shin.L/heel.L
+        weight: 1
+      - path: metarig/Base/thigh.L/shin.L/heel.L/heel.L_end
+        weight: 1
+      - path: metarig/Base/thigh.R
+        weight: 1
+      - path: metarig/Base/thigh.R/shin.R
+        weight: 1
+      - path: metarig/Base/thigh.R/shin.R/foot.R
+        weight: 1
+      - path: metarig/Base/thigh.R/shin.R/foot.R/toe.R
+        weight: 1
+      - path: metarig/Base/thigh.R/shin.R/foot.R/toe.R/toe.R_end
+        weight: 1
+      - path: metarig/Base/thigh.R/shin.R/heel.R
+        weight: 1
+      - path: metarig/Base/thigh.R/shin.R/heel.R/heel.R_end
+        weight: 1
+      - path: Sphere
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: metarig|Jump
+      takeName: metarig|Jump
+      firstFrame: 0
+      lastFrame: 32
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: metarig
+        weight: 1
+      - path: metarig/Base
+        weight: 1
+      - path: metarig/Base/hips
+        weight: 1
+      - path: metarig/Base/hips/spine
+        weight: 1
+      - path: metarig/Base/hips/spine/spine_end
+        weight: 1
+      - path: metarig/Base/thigh.L
+        weight: 1
+      - path: metarig/Base/thigh.L/shin.L
+        weight: 1
+      - path: metarig/Base/thigh.L/shin.L/foot.L
+        weight: 1
+      - path: metarig/Base/thigh.L/shin.L/foot.L/toe.L
+        weight: 1
+      - path: metarig/Base/thigh.L/shin.L/foot.L/toe.L/toe.L_end
+        weight: 1
+      - path: metarig/Base/thigh.L/shin.L/heel.L
+        weight: 1
+      - path: metarig/Base/thigh.L/shin.L/heel.L/heel.L_end
+        weight: 1
+      - path: metarig/Base/thigh.R
+        weight: 1
+      - path: metarig/Base/thigh.R/shin.R
+        weight: 1
+      - path: metarig/Base/thigh.R/shin.R/foot.R
+        weight: 1
+      - path: metarig/Base/thigh.R/shin.R/foot.R/toe.R
+        weight: 1
+      - path: metarig/Base/thigh.R/shin.R/foot.R/toe.R/toe.R_end
+        weight: 1
+      - path: metarig/Base/thigh.R/shin.R/heel.R
+        weight: 1
+      - path: metarig/Base/thigh.R/shin.R/heel.R/heel.R_end
+        weight: 1
+      - path: Sphere
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: metarig|Falling
+      takeName: metarig|Falling
       firstFrame: 0
       lastFrame: 32
       wrapMode: 0

@@ -6,12 +6,46 @@ ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Base
+    100004: foot_L
+    100006: foot_R
+    100008: heel_L
+    100010: heel_R
+    100012: hips
+    100014: metarig
+    100016: shin_L
+    100018: shin_R
+    100020: Sphere
+    100022: spine
+    100024: thigh_L
+    100026: thigh_R
+    100028: toe_L
+    100030: toe_R
     400000: //RootNode
+    400002: Base
+    400004: foot_L
+    400006: foot_R
+    400008: heel_L
+    400010: heel_R
+    400012: hips
+    400014: metarig
+    400016: shin_L
+    400018: shin_R
+    400020: Sphere
+    400022: spine
+    400024: thigh_L
+    400026: thigh_R
+    400028: toe_L
+    400030: toe_R
     2300000: //RootNode
+    2300002: Sphere
     3300000: //RootNode
+    3300002: Sphere
     4300000: Sphere
     7400000: Default Take
+    7400002: Default Take0
     9500000: //RootNode
+    13700000: Sphere
   materials:
     importMaterials: 0
     materialName: 0
@@ -63,6 +97,66 @@ ModelImporter:
       maskType: 3
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Default Take0
+      takeName: Default Take
+      firstFrame: 0
+      lastFrame: 32
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: metarig
+        weight: 1
+      - path: metarig/Base
+        weight: 1
+      - path: metarig/Base/hips
+        weight: 1
+      - path: metarig/Base/hips/spine
+        weight: 1
+      - path: metarig/Base/thigh_L
+        weight: 1
+      - path: metarig/Base/thigh_L/shin_L
+        weight: 1
+      - path: metarig/Base/thigh_L/shin_L/foot_L
+        weight: 1
+      - path: metarig/Base/thigh_L/shin_L/foot_L/toe_L
+        weight: 1
+      - path: metarig/Base/thigh_L/shin_L/heel_L
+        weight: 1
+      - path: metarig/Base/thigh_R
+        weight: 1
+      - path: metarig/Base/thigh_R/shin_R
+        weight: 1
+      - path: metarig/Base/thigh_R/shin_R/foot_R
+        weight: 1
+      - path: metarig/Base/thigh_R/shin_R/foot_R/toe_R
+        weight: 1
+      - path: metarig/Base/thigh_R/shin_R/heel_R
+        weight: 1
+      - path: Sphere
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
@@ -85,7 +179,7 @@ ModelImporter:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
-  importAnimation: 1
+  importAnimation: 0
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2
@@ -101,10 +195,10 @@ ModelImporter:
     rootMotionBoneName: 
     rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
