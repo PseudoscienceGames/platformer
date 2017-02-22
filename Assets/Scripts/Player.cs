@@ -17,6 +17,8 @@ public class Player : MonoBehaviour
 	public float wallSpeed = 3;
 	public float wallStickTime;
 	public float jumpLeeway;
+	public float runMultiplier;
+	public float animRunSpeed;
 
 	float timeSinceGrounded = 0;
 	float timeToWallUnstick;
@@ -56,6 +58,8 @@ public class Player : MonoBehaviour
 				anim.SetBool("isJumping", true);
 			}
 			Vector3 input = Camera.main.transform.root.TransformDirection(new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")) * moveSpeed);
+			if (Input.GetButton("Run"))
+				input *= runMultiplier;
 			Vector3 target = input;
 			if (timeToWallUnstick > 0)
 				timeToWallUnstick -= Time.deltaTime;
@@ -104,7 +108,7 @@ public class Player : MonoBehaviour
 			if ((new Vector3(velocity.x, 0, velocity.z)).magnitude > 0.05f)
 			{
 				anim.SetBool("isRunning", true);
-				anim.SetFloat("Speed", (new Vector3(velocity.x, 0, velocity.z)).magnitude);
+				anim.SetFloat("Speed", (new Vector3(velocity.x, 0, velocity.z)).magnitude * animRunSpeed);
 			}
 			else
 			{
