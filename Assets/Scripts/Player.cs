@@ -19,6 +19,8 @@ public class Player : MonoBehaviour
 	public float jumpLeeway;
 	public float runMultiplier;
 	public float animRunSpeed;
+	public ParticleSystem ps;
+	public ParticleSystem landingPuff;
 
 	float timeSinceGrounded = 0;
 	float timeToWallUnstick;
@@ -32,6 +34,7 @@ public class Player : MonoBehaviour
 	bool isAlive = true;
 	public GameObject deadPlayer;
 	public Animator anim;
+	public bool wasGrounded = true;
 
 	void Start()
 	{
@@ -48,14 +51,28 @@ public class Player : MonoBehaviour
 		{
 			if (pc.isGrounded)
 			{
+				if(!wasGrounded)
+				{
+					Debug.Log("Puff");
+					if(Time.timeSinceLevelLoad > 1)
+						landingPuff.Emit(20);
+					wasGrounded = true;
+				}
+				if (!ps.isEmitting && (new Vector3(velocity.x, 0, velocity.z)).magnitude > 5)
+					ps.Play();
+				if (ps.isEmitting && (new Vector3(velocity.x, 0, velocity.z)).magnitude <= 5)
+					ps.Stop();
 				timeSinceGrounded = 0;
 				velocity.y = -0.1f;
 				anim.SetBool("isJumping", false);
 			}
 			else
 			{
+				if (ps.isEmitting)
+					ps.Stop();
 				timeSinceGrounded += Time.deltaTime;
 				anim.SetBool("isJumping", true);
+				wasGrounded = false;
 			}
 			Vector3 input = Camera.main.transform.root.TransformDirection(new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")) * moveSpeed);
 			if (Input.GetButton("Run"))
@@ -135,6 +152,7 @@ public class Player : MonoBehaviour
 		normal = hit.normal;
 		if (!pc.isGrounded && hit.normal.y < 0.1f && hit.normal.y > -0.5f)
 		{
+			ps.Emit(1);
 			timeToWallUnstick = wallStickTime;
 			if (velocity.y < -wallSpeed)
 				velocity.y = -wallSpeed;
