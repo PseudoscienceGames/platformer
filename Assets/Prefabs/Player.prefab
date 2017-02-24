@@ -150,7 +150,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1432480820390658
 GameObject:
   m_ObjectHideFlags: 1
@@ -937,11 +937,13 @@ MonoBehaviour:
   animRunSpeed: 0.5
   ps: {fileID: 198960368223812260}
   landingPuff: {fileID: 198555562997712828}
+  pickups: 0
   gravity: 0
   velocity: {x: 0, y: 0, z: 0}
   deadPlayer: {fileID: 1914912337831550, guid: c35a7930f027e2845b9feaa4fb81fa73, type: 2}
   anim: {fileID: 95972281154497556}
   wasGrounded: 1
+  pickupCount: {fileID: 0}
 --- !u!137 &137632413611581722
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

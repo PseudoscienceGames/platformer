@@ -16,7 +16,7 @@ TagManager:
   - Lethal
   - Spawn
   - Goal
-  - LevelIcon
+  - Pickup
   layers:
   - Default
   - TransparentFX

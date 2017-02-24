@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(CharacterController))]
 public class Player : MonoBehaviour
@@ -21,6 +22,7 @@ public class Player : MonoBehaviour
 	public float animRunSpeed;
 	public ParticleSystem ps;
 	public ParticleSystem landingPuff;
+	public int pickups;
 
 	float timeSinceGrounded = 0;
 	float timeToWallUnstick;
@@ -31,10 +33,11 @@ public class Player : MonoBehaviour
 	public Vector3 velocity;
 	Vector3 normal;
 	CharacterController pc;
-	bool isAlive = true;
+	bool isAlive = false;
 	public GameObject deadPlayer;
 	public Animator anim;
 	public bool wasGrounded = true;
+	public Text pickupCount;
 
 	void Start()
 	{
@@ -42,7 +45,7 @@ public class Player : MonoBehaviour
 		gravity = -(2 * maxJumpHeight) / Mathf.Pow(timeToJumpApex, 2);
 		maxJumpVelocity = Mathf.Abs(gravity * timeToJumpApex);
 		minJumpVelocity = Mathf.Sqrt(2 * Mathf.Abs(gravity) * minJumpHeight);
-		GameObject.Find("Timer").GetComponent<Timer>().Reset();
+		Invoke("Respawn", .5f);
 	}
 
 	void Update()
@@ -53,9 +56,7 @@ public class Player : MonoBehaviour
 			{
 				if(!wasGrounded)
 				{
-					Debug.Log("Puff");
-					if(Time.timeSinceLevelLoad > 1)
-						landingPuff.Emit(20);
+					landingPuff.Emit(50);
 					wasGrounded = true;
 				}
 				if (!ps.isEmitting && (new Vector3(velocity.x, 0, velocity.z)).magnitude > 5)
@@ -138,17 +139,12 @@ public class Player : MonoBehaviour
 
 	private void OnControllerColliderHit(ControllerColliderHit hit)
 	{
+		if (hit.gameObject.tag == "Pickup")
+			Pickup(hit.gameObject);
 		if (hit.gameObject.tag == "Lethal")
 			Die();
 		if (hit.gameObject.tag == "Goal")
-		{
-			Win();
-			hit.gameObject.GetComponent<Goal>().Load();
-		}
-		if (hit.gameObject.tag == "LevelIcon")
-		{
-			hit.gameObject.GetComponent<LevelIcon>().Load();
-		}
+			Win(hit.gameObject.GetComponent<Goal>());
 		normal = hit.normal;
 		if (!pc.isGrounded && hit.normal.y < 0.1f && hit.normal.y > -0.5f)
 		{
@@ -163,10 +159,18 @@ public class Player : MonoBehaviour
 		}
 	}
 
+	void Pickup(GameObject pickup)
+	{
+		pickups++;
+		pickup.SetActive(false);
+		pickupCount.text = pickups.ToString();
+	}
+
 	void Die()
 	{
 		isAlive = false;
 		Explode();
+		Invoke("MoveCamera", 0.5f);
 		Invoke("Respawn", 1);
 	}
 
@@ -181,6 +185,11 @@ public class Player : MonoBehaviour
 		}
 	}
 
+	void MoveCamera()
+	{
+		transform.position = GameObject.FindGameObjectWithTag("Spawn").transform.position;
+	}
+
 	void Respawn()
 	{
 		transform.position = GameObject.FindGameObjectWithTag("Spawn").transform.position;
@@ -188,8 +197,12 @@ public class Player : MonoBehaviour
 		isAlive = true;
 		transform.FindChild("Char").gameObject.SetActive(true);
 	}
-	void Win()
+	void Win(Goal goal)
 	{
+		anim.Stop();
+		ps.Pause();
+		landingPuff.Pause();
+		goal.Load();
 		GameObject.Find("Timer").GetComponent<Timer>().Stop();
 		isAlive = false;
 	}

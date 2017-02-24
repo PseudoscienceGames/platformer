@@ -15,7 +15,7 @@ public class Timer : MonoBehaviour
 		if (count)
 		{
 			time += Time.deltaTime;
-			text.text = time.ToString();
+			text.text = time.ToString("F2");
 		}
 	}
 

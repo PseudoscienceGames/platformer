@@ -9,6 +9,11 @@ public class Goal : MonoBehaviour
 
 	public void Load()
 	{
+		Invoke("NextScene", 1);
+	}
+
+	void NextScene()
+	{
 		SceneManager.LoadScene(sceneIndex);
 	}
 }
