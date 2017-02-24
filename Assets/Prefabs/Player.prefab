@@ -941,7 +941,7 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   deadPlayer: {fileID: 1914912337831550, guid: c35a7930f027e2845b9feaa4fb81fa73, type: 2}
   anim: {fileID: 95972281154497556}
-  wasGrounded: 0
+  wasGrounded: 1
 --- !u!137 &137632413611581722
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -1070,7 +1070,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1871817184
+  randomSeed: -694438715
   InitialModule:
     serializedVersion: 3
     enabled: 1
