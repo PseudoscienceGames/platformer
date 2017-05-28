@@ -176,7 +176,7 @@ public class Player : MonoBehaviour
 
 	void Explode()
 	{
-		transform.FindChild("Char").gameObject.SetActive(false);
+		transform.Find("Char").gameObject.SetActive(false);
 		velocity = Vector3.zero;
 		GameObject dp = Instantiate(deadPlayer, transform.position, transform.rotation) as GameObject;
 		foreach(Rigidbody rb in dp.GetComponentsInChildren<Rigidbody>())
@@ -195,11 +195,11 @@ public class Player : MonoBehaviour
 		transform.position = GameObject.FindGameObjectWithTag("Spawn").transform.position;
 		GameObject.Find("Timer").GetComponent<Timer>().Reset();
 		isAlive = true;
-		transform.FindChild("Char").gameObject.SetActive(true);
+		transform.Find("Char").gameObject.SetActive(true);
 	}
 	void Win(Goal goal)
 	{
-		anim.Stop();
+		anim.StopPlayback();
 		ps.Pause();
 		landingPuff.Pause();
 		goal.Load();
