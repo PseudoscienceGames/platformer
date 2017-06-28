@@ -1,28 +1,19 @@
 fileFormatVersion: 2
-guid: c647fe04663263144ac3a3ac9b880ba3
-timeCreated: 1497581318
+guid: 70007197174cf124ba023d48aa71d7c9
+timeCreated: 1498271165
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Col
-    100004: Cube
     400000: //RootNode
-    400002: Col
-    400004: Cube
     2300000: //RootNode
-    2300002: Col
-    2300004: Cube
     3300000: //RootNode
-    3300002: Col
-    3300004: Cube
-    4300000: Cube
-    4300002: Col
+    4300000: Rock1
     7400000: Default Take
     9500000: //RootNode
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
   animations:
@@ -63,8 +54,8 @@ ModelImporter:
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
-    normalSmoothAngle: 60
-    normalImportMode: 0
+    normalSmoothAngle: 29
+    normalImportMode: 1
     tangentImportMode: 3
   importAnimation: 0
   copyAvatar: 0
@@ -82,7 +73,7 @@ ModelImporter:
     rootMotionBoneName: 
     rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
-    hasExtraRoot: 1
+    hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 0

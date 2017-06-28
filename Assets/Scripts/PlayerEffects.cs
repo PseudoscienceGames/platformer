@@ -11,61 +11,54 @@ public class PlayerEffects : MonoBehaviour
 	public Vector3 velocity;
 	public float animRunSpeed;
 	Player p;
-	CharacterController pc;
-	bool isAlive;
 	WindZone wind;
 
 	private void Start()
 	{
 		p = GetComponent<Player>();
-		pc = GetComponent<CharacterController>();
 		wind = transform.Find("WindZone").GetComponent<WindZone>();
 		Invoke("Respawn", .5f);
 	}
 	private void LateUpdate()
 	{
-		isAlive = p.isAlive;
 		velocity = p.velocity;
 		wind.windMain = new Vector3(velocity.x, 0, velocity.z).magnitude;
-		if (isAlive)
+		if (p.isGrounded)
 		{
-			if (pc.isGrounded)
+			if (!ps.isEmitting && (new Vector3(velocity.x, 0, velocity.z)).magnitude > 5)
+				ps.Play();
+			if (ps.isEmitting && (new Vector3(velocity.x, 0, velocity.z)).magnitude <= 5)
+				ps.Stop();
+			anim.SetBool("isJumping", false);
+			if (new Vector3(velocity.x, 0, velocity.z).magnitude > 0.05f)
 			{
-				if (!ps.isEmitting && (new Vector3(velocity.x, 0, velocity.z)).magnitude > 5)
-					ps.Play();
-				if (ps.isEmitting && (new Vector3(velocity.x, 0, velocity.z)).magnitude <= 5)
-					ps.Stop();
-				anim.SetBool("isJumping", false);
-				if (new Vector3(velocity.x, 0, velocity.z).magnitude > 0.05f)
-				{
-					anim.SetBool("isRunning", true);
-					anim.SetFloat("Speed", (new Vector3(velocity.x, 0, velocity.z)).magnitude * animRunSpeed);
-				}
-				else
-				{
-					anim.SetBool("isRunning", false);
-					anim.SetFloat("Speed", 1);
-				}
+				anim.SetBool("isRunning", true);
+				anim.SetFloat("Speed", (new Vector3(velocity.x, 0, velocity.z)).magnitude * animRunSpeed);
 			}
 			else
 			{
-				if (ps.isEmitting)
-					ps.Stop();
-				anim.SetBool("isJumping", true);
+				anim.SetBool("isRunning", false);
+				anim.SetFloat("Speed", 1);
 			}
-			if (Input.GetButtonDown("Jump"))
-			{
-				//if (pc.isGrounded || timeSinceGrounded <= jumpLeeway)
-				//{
-				//	anim.SetBool("isJumping", true);
-				//	velocity.y = maxJumpVelocity;
-				//	timeSinceGrounded = jumpLeeway + 1;
-				//}
-				//else if (timeToWallUnstick > 0)
-				//{
-				//	anim.SetTrigger("WallJump");
-				//}
-			}
+		}
+		else
+		{
+			if (ps.isEmitting)
+				ps.Stop();
+			anim.SetBool("isJumping", true);
+		}
+		if (Input.GetButtonDown("Jump"))
+		{
+			//if (pc.isGrounded || timeSinceGrounded <= jumpLeeway)
+			//{
+			//	anim.SetBool("isJumping", true);
+			//	velocity.y = maxJumpVelocity;
+			//	timeSinceGrounded = jumpLeeway + 1;
+			//}
+			//else if (timeToWallUnstick > 0)
+			//{
+			//	anim.SetTrigger("WallJump");
+			//}
 		}
 	}
 	private void OnControllerColliderHit(ControllerColliderHit hit)
@@ -91,12 +84,11 @@ public class PlayerEffects : MonoBehaviour
 	}
 	void Die()
 	{
-		isAlive = false;
-		GetComponent<Player>().isAlive = false;
 		Explode();
 		Invoke("MoveCamera", 0.5f);
 		Invoke("Respawn", 1);
 		p.velocity = Vector3.zero;
+		p.enabled = false;
 	}
 	void Explode()
 	{
@@ -116,9 +108,8 @@ public class PlayerEffects : MonoBehaviour
 	{
 		transform.position = GameObject.FindGameObjectWithTag("Spawn").transform.position;
 		GameObject.Find("Timer").GetComponent<Timer>().Reset();
-		GetComponent<Player>().isAlive = true;
-		isAlive = true;
 		transform.Find("Char").gameObject.SetActive(true);
+		p.enabled = true;
 	}
 	void Win(Goal goal)
 	{
@@ -127,6 +118,6 @@ public class PlayerEffects : MonoBehaviour
 		landingPuff.Pause();
 		goal.Load();
 		GameObject.Find("Timer").GetComponent<Timer>().Stop();
-		isAlive = false;
+		p.enabled = false;
 	}
 }

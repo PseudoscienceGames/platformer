@@ -1,24 +1,40 @@
 fileFormatVersion: 2
-guid: c647fe04663263144ac3a3ac9b880ba3
-timeCreated: 1497581318
+guid: 039d7e3780e339e41b388255475ca3d6
+timeCreated: 1498260894
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Col
-    100004: Cube
+    100002: Plane_001_MeshPart0
+    100004: Plane_001_MeshPart1
+    100006: Plane_001_MeshPart2
+    100008: Plane_001_MeshPart3
+    100010: Plane_001_MeshPart4
     400000: //RootNode
-    400002: Col
-    400004: Cube
-    2300000: //RootNode
-    2300002: Col
-    2300004: Cube
-    3300000: //RootNode
-    3300002: Col
-    3300004: Cube
-    4300000: Cube
-    4300002: Col
+    400002: Plane_001_MeshPart0
+    400004: Plane_001_MeshPart1
+    400006: Plane_001_MeshPart2
+    400008: Plane_001_MeshPart3
+    400010: Plane_001_MeshPart4
+    2300000: Plane_001_MeshPart0
+    2300002: Plane_001_MeshPart1
+    2300004: Plane_001_MeshPart2
+    2300006: Plane_001_MeshPart3
+    2300008: Plane_001_MeshPart4
+    2300010: //RootNode
+    3300000: Plane_001_MeshPart0
+    3300002: Plane_001_MeshPart1
+    3300004: Plane_001_MeshPart2
+    3300006: Plane_001_MeshPart3
+    3300008: Plane_001_MeshPart4
+    3300010: //RootNode
+    4300000: Plane_001_MeshPart0
+    4300002: Plane_001_MeshPart1
+    4300004: Plane_001_MeshPart2
+    4300006: Plane_001_MeshPart3
+    4300008: Plane_001_MeshPart4
+    4300010: Plane_001
     7400000: Default Take
     9500000: //RootNode
   materials:
@@ -66,7 +82,7 @@ ModelImporter:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
-  importAnimation: 0
+  importAnimation: 1
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2
@@ -82,10 +98,10 @@ ModelImporter:
     rootMotionBoneName: 
     rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
-    hasExtraRoot: 1
+    hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

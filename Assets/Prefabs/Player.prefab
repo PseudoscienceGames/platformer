@@ -207,8 +207,7 @@ GameObject:
   - component: {fileID: 143478560892775622}
   - component: {fileID: 114890602660620868}
   - component: {fileID: 114378057778020370}
-  - component: {fileID: 114401598204020274}
-  - component: {fileID: 114065253322783456}
+  - component: {fileID: 114239675543454778}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -353,6 +352,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1788511277364356
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4335918589840052}
+  - component: {fileID: 182302403432460368}
+  m_Layer: 0
+  m_Name: WindZone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
 --- !u!1 &1795669998602096
 GameObject:
   m_ObjectHideFlags: 1
@@ -413,6 +428,54 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1884330683634428
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4608687471743600}
+  - component: {fileID: 182790440840156252}
+  m_Layer: 0
+  m_Name: WindZone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!1 &1930510587834534
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4912728143402124}
+  - component: {fileID: 182462353904354810}
+  m_Layer: 0
+  m_Name: WindZone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!1 &1933025002395594
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4641013483331916}
+  - component: {fileID: 182250618050167544}
+  m_Layer: 0
+  m_Name: WindZone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
 --- !u!4 &4030881619564726
 Transform:
   m_ObjectHideFlags: 1
@@ -483,6 +546,19 @@ Transform:
   m_Father: {fileID: 4752217927366904}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4335918589840052
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1788511277364356}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4766272749526556}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4366873141491732
 Transform:
   m_ObjectHideFlags: 1
@@ -537,6 +613,19 @@ Transform:
   m_Father: {fileID: 4766272749526556}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4608687471743600
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1884330683634428}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4766272749526556}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4613821017787604
 Transform:
   m_ObjectHideFlags: 1
@@ -565,6 +654,19 @@ Transform:
   - {fileID: 4889140446526038}
   m_Father: {fileID: 4285892266987248}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4641013483331916
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1933025002395594}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4766272749526556}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4657151282925058
 Transform:
@@ -627,7 +729,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1484281685490040}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -21.11, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4553180242826512}
@@ -635,6 +737,10 @@ Transform:
   - {fileID: 4781909529881308}
   - {fileID: 4657151282925058}
   - {fileID: 4190478228140642}
+  - {fileID: 4335918589840052}
+  - {fileID: 4608687471743600}
+  - {fileID: 4912728143402124}
+  - {fileID: 4641013483331916}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -735,6 +841,19 @@ Transform:
   - {fileID: 4173520762099954}
   m_Father: {fileID: 4752217927366904}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4912728143402124
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1930510587834534}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4766272749526556}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4918839764953630
 Transform:
@@ -884,7 +1003,7 @@ TrailRenderer:
     textureMode: 0
   m_MinVertexDistance: 0.05
   m_Autodestruct: 0
---- !u!114 &114065253322783456
+--- !u!114 &114239675543454778
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -892,14 +1011,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1484281685490040}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e4a69f111f29bc48bb048a27e93692b, type: 3}
+  m_Script: {fileID: 11500000, guid: 17cae77aeda2a414aa3f0c0c563e6d34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0
-  runMultiplyer: 0
-  maxJumpHeight: 0
-  minJumpHeight: 0
-  jumpLeeway: 0
+  myColor: {r: 0, g: 0, b: 0, a: 0}
+  time: 9999
 --- !u!114 &114378057778020370
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -917,19 +1033,6 @@ MonoBehaviour:
   anim: {fileID: 95972281154497556}
   velocity: {x: 0, y: 0, z: 0}
   animRunSpeed: 0.5
---- !u!114 &114401598204020274
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1484281685490040}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17cae77aeda2a414aa3f0c0c563e6d34, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myColor: {r: 0, g: 0, b: 0, a: 0}
-  time: 55555
 --- !u!114 &114890602660620868
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -942,22 +1045,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 20
+  slideSpeed: 20
   maxJumpHeight: 5
   minJumpHeight: 0.5
   timeToJumpApex: 0.4
   smooth: 0.1
-  wjForce: {x: 0, y: 25, z: 10}
+  airSmooth: 0.15
+  wjUp: {x: 0, y: 25, z: 15}
+  wjOut: {x: 0, y: 25, z: 25}
   wallSpeed: 8
   wallStickTime: 0.1
   jumpLeeway: 0.1
-  runMultiplier: 1
-  pickups: 0
-  G: 0
+  timeToWallUnstick: 0
   gravity: 0
+  maxJumpVelocity: 0
   velocity: {x: 0, y: 0, z: 0}
-  isAlive: 0
+  normal: {x: 0, y: 0, z: 0}
+  isGrounded: 0
   wasGrounded: 1
-  pickupCount: {fileID: 0}
 --- !u!137 &137632413611581722
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -1027,11 +1132,63 @@ CharacterController:
   serializedVersion: 2
   m_Height: 0.625
   m_Radius: 0.25
-  m_SlopeLimit: 30
+  m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.3125, z: 0}
+--- !u!182 &182250618050167544
+WindZone:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1933025002395594}
+  m_Enabled: 1
+  m_Mode: 0
+  m_Radius: 20
+  m_WindMain: 1
+  m_WindTurbulence: 1
+  m_WindPulseMagnitude: 0.5
+  m_WindPulseFrequency: 0.01
+--- !u!182 &182302403432460368
+WindZone:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1788511277364356}
+  m_Enabled: 1
+  m_Mode: 0
+  m_Radius: 20
+  m_WindMain: 1
+  m_WindTurbulence: 1
+  m_WindPulseMagnitude: 0.5
+  m_WindPulseFrequency: 0.01
+--- !u!182 &182462353904354810
+WindZone:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1930510587834534}
+  m_Enabled: 1
+  m_Mode: 0
+  m_Radius: 20
+  m_WindMain: 1
+  m_WindTurbulence: 1
+  m_WindPulseMagnitude: 0.5
+  m_WindPulseFrequency: 0.01
+--- !u!182 &182790440840156252
+WindZone:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1884330683634428}
+  m_Enabled: 1
+  m_Mode: 0
+  m_Radius: 20
+  m_WindMain: 1
+  m_WindTurbulence: 1
+  m_WindPulseMagnitude: 0.5
+  m_WindPulseFrequency: 0.01
 --- !u!198 &198555562997712828
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -2411,7 +2568,7 @@ ParticleSystem:
     inWorldSpace: 0
     randomizePerFrame: 0
   ExternalForcesModule:
-    enabled: 0
+    enabled: 1
     multiplier: 1
   ClampVelocityModule:
     enabled: 0
@@ -5513,7 +5670,7 @@ ParticleSystem:
     inWorldSpace: 0
     randomizePerFrame: 0
   ExternalForcesModule:
-    enabled: 0
+    enabled: 1
     multiplier: 1
   ClampVelocityModule:
     enabled: 0

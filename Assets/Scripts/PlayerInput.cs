@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour
 {
 	public float moveSpeed;
-	public float runMultiplyer;
 	public float maxJumpHeight;
 	public float minJumpHeight;
 	public float jumpLeeway;
@@ -15,7 +14,7 @@ public class PlayerInput : MonoBehaviour
 	bool isJumping;
 	float timeSinceGrounded;
 	bool isGrounded;
-	CharState myState;
+	public CharState myState;
 	CharState lastState;
 	CharacterController cc;
 	PlayerMotor pm;
@@ -30,8 +29,6 @@ public class PlayerInput : MonoBehaviour
 	{
 		velocity = cc.velocity;
 		input = Camera.main.transform.root.TransformDirection(new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")) * moveSpeed);
-		if (Input.GetButton("Run"))
-			input = input * runMultiplyer;
 		isJumping = Input.GetButton("Jump");
 		isGrounded = cc.isGrounded;
 		if (isGrounded)
@@ -44,10 +41,9 @@ public class PlayerInput : MonoBehaviour
 
 	void FindState()
 	{
+		Debug.Log(input.magnitude);
 		CharState state = CharState.Idle;
-		if (input.magnitude < 0.05f && !isJumping && isGrounded)
-			state = CharState.Idle;
-		if (input.magnitude >= 0.05f && !isJumping && isGrounded)
+		if (input.magnitude >= 0.05f && isGrounded)
 			state = CharState.Running;
 		if (isJumping && (isGrounded || timeSinceGrounded <= jumpLeeway))
 			state = CharState.Jumping;
@@ -64,5 +60,4 @@ public enum CharState
 	Jumping,
 	Falling,
 	Sliding,
-
 }

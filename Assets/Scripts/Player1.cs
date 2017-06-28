@@ -3,34 +3,31 @@ using System.Collections;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(CharacterController))]
-public class Player : MonoBehaviour
+public class Player1 : MonoBehaviour
 {
 	public float moveSpeed = 10;
-	public float slideSpeed;
 	public float maxJumpHeight = 5;
 	public float minJumpHeight = 0.5f;
 	public float timeToJumpApex = 0.4f;
 	public float smooth = 0.1f;
-	public float airSmooth = 0.2f;
-	public Vector3 wjUp;
-	public Vector3 wjOut;
+	public Vector3 wjForce;
 	public float wallSpeed = 8;
 	public float wallStickTime;
 	public float jumpLeeway;
 
 	float timeSinceGrounded = 0;
-	public float timeToWallUnstick;
+	float timeToWallUnstick;
 	public float gravity;
-	public float maxJumpVelocity;
+	float maxJumpVelocity;
 	float minJumpVelocity;
 	Vector3 smoothdamp;
 	public Vector3 velocity;
 	public Vector3 normal;
 	CharacterController pc;
-	Vector3 input;
-	public bool isGrounded;
-	public bool wasGrounded = true;
+
+	//public bool wasGrounded = true;
 	PlayerEffects pe;
+	bool slide;
 
 	void Start()
 	{
@@ -40,86 +37,85 @@ public class Player : MonoBehaviour
 		maxJumpVelocity = Mathf.Abs(gravity * timeToJumpApex);
 		minJumpVelocity = Mathf.Sqrt(2 * Mathf.Abs(gravity) * minJumpHeight);
 	}
+
 	void Update()
 	{
-		input = Camera.main.transform.root.TransformDirection(new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")) * moveSpeed);
-		isGrounded = GroundCheck();
+		if(normal.y < .866f)
+			pc.Move(new Vector3(normal.x, -(1 - normal.y), normal.z) * 0.1f);
+		if (pc.isGrounded)
+		{
+			timeSinceGrounded = 0;
+			velocity.y = -0.1f;
+		}
+		else
+		{
+			timeSinceGrounded += Time.deltaTime;
+			//wasGrounded = false;
+		}
+		Vector3 input = Camera.main.transform.root.TransformDirection(new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")) * moveSpeed);
+		if (timeToWallUnstick > 0)
+			timeToWallUnstick -= Time.deltaTime;
 		if (Input.GetButtonDown("Jump"))
 		{
-			Jump();
+			Jump(input);
 		}
-		if(!isGrounded)
-			velocity.y += gravity * Time.deltaTime;
 		if (Input.GetButtonUp("Jump") && velocity.y > minJumpVelocity)
 			velocity.y = minJumpVelocity;
 		input.y = velocity.y;
+		//if (pc.isGrounded && !wasGrounded)
+		//{
+		//	wasGrounded = true;
+		//	pe.Land();
+		//}
+		velocity = Vector3.SmoothDamp(velocity, input, ref smoothdamp, smooth);
+		velocity.y += gravity * Time.deltaTime;
 		transform.LookAt(new Vector3(transform.position.x + velocity.x, transform.position.y, transform.position.z + velocity.z));
+		bool wasGrounded = false;
 		if (pc.isGrounded)
 			wasGrounded = true;
-		else
-			wasGrounded = false;
-		float smoothMod = smooth;
-		if (!isGrounded)
-			smoothMod = airSmooth;
-		velocity = Vector3.SmoothDamp(velocity, input, ref smoothdamp, smoothMod);
 		pc.Move(velocity * Time.deltaTime);
-		if (pc.isGrounded && !wasGrounded)
+		if (!pc.isGrounded && wasGrounded && !Input.GetButton("Jump"))
 		{
-			pe.Land();
+			RaycastHit hit;
+			if (Physics.Raycast(transform.position, -Vector3.up, out hit, 1))
+			{
+				pc.Move(Vector3.up * -hit.distance);
+			}
 		}
-	}
-	bool GroundCheck()
-	{
-		if (pc.isGrounded)
-		{
-			timeSinceGrounded = 0;
-			velocity.y = -0.1f;
-			timeToWallUnstick = 0;
-			return true;
-		}
-		RaycastHit hit;
-		if (Physics.Raycast(transform.position, -Vector3.up, out hit, 1) && !Input.GetButton("Jump") && wasGrounded)
-		{
-			pc.Move(Vector3.up * -hit.distance);
-			timeSinceGrounded = 0;
-			velocity.y = -0.1f;
-			timeToWallUnstick = 0;
-			return true;
-		}
-		return false;
 	}
 
-	void Jump()
+	void Jump(Vector3 input)
 	{
-		if (isGrounded || timeSinceGrounded <= jumpLeeway)
+		//Regular Jump
+		if (pc.isGrounded || timeSinceGrounded <= jumpLeeway)
 		{
 			velocity.y = maxJumpVelocity;
 			timeSinceGrounded = jumpLeeway + 1;
 		}
-		if (timeToWallUnstick > 0)
+		//Wall Jump
+		else if (timeToWallUnstick > 0)
 		{
 			timeToWallUnstick = 0;
-			if (Vector3.Angle(normal, input) < 90)
-			{
-				velocity = normal * wjOut.z;
-				velocity.y = wjOut.y;
-			}
-			else
-			{
-				velocity = normal * wjUp.z;
-				velocity.y = wjUp.y;
-			}
+			velocity = normal * wjForce.z; ;
+			velocity.y = wjForce.y;
 		}
 	}
+
 	private void OnControllerColliderHit(ControllerColliderHit hit)
 	{
 		normal = hit.normal;
-		if (!isGrounded && hit.normal.y < 0.866f && hit.normal.y > -0.5f)
+		Debug.Log(normal.y);
+		if (!pc.isGrounded && hit.normal.y < 0.866f && hit.normal.y > -0.5f)
 		{
+			slide = true;
 			pe.ps.Emit(1);
 			timeToWallUnstick = wallStickTime;
 			if (velocity.y < -wallSpeed)
 				velocity.y = -wallSpeed;
+		}
+		if (hit.normal.y < -0.5f)
+		{
+			velocity.y = gravity * Time.deltaTime;
 		}
 	}
 }
