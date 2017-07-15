@@ -11,34 +11,41 @@ public class PlayerEffects : MonoBehaviour
 	public Vector3 velocity;
 	public float animRunSpeed;
 	Player p;
-	WindZone wind;
 
 	private void Start()
 	{
 		p = GetComponent<Player>();
-		wind = transform.Find("WindZone").GetComponent<WindZone>();
 		Invoke("Respawn", .5f);
+		anim = transform.Find("Char").GetComponent<Animator>();
 	}
 	private void LateUpdate()
 	{
 		velocity = p.velocity;
-		wind.windMain = new Vector3(velocity.x, 0, velocity.z).magnitude;
 		if (p.isGrounded)
 		{
 			if (!ps.isEmitting && (new Vector3(velocity.x, 0, velocity.z)).magnitude > 5)
 				ps.Play();
 			if (ps.isEmitting && (new Vector3(velocity.x, 0, velocity.z)).magnitude <= 5)
 				ps.Stop();
-			anim.SetBool("isJumping", false);
-			if (new Vector3(velocity.x, 0, velocity.z).magnitude > 0.05f)
+			if (p.isSliding)
 			{
-				anim.SetBool("isRunning", true);
-				anim.SetFloat("Speed", (new Vector3(velocity.x, 0, velocity.z)).magnitude * animRunSpeed);
+				anim.SetBool("isSliding", true);
 			}
 			else
 			{
-				anim.SetBool("isRunning", false);
-				anim.SetFloat("Speed", 1);
+				anim.SetBool("isSliding", false);
+				
+				anim.SetBool("isJumping", false);
+				if (new Vector3(velocity.x, 0, velocity.z).magnitude > 0.05f)
+				{
+					anim.SetBool("isRunning", true);
+					anim.SetFloat("Speed", (new Vector3(velocity.x, 0, velocity.z)).magnitude * animRunSpeed);
+				}
+				else
+				{
+					anim.SetBool("isRunning", false);
+					anim.SetFloat("Speed", 1);
+				}
 			}
 		}
 		else
@@ -119,5 +126,10 @@ public class PlayerEffects : MonoBehaviour
 		goal.Load();
 		GameObject.Find("Timer").GetComponent<Timer>().Stop();
 		p.enabled = false;
+	}
+
+	public void Slide()
+	{
+		anim.SetBool("isSliding", true);
 	}
 }
