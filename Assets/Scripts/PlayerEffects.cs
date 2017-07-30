@@ -27,10 +27,6 @@ public class PlayerEffects : MonoBehaviour
 				ps.Play();
 			if (ps.isEmitting && (new Vector3(velocity.x, 0, velocity.z)).magnitude <= 5)
 				ps.Stop();
-			if (p.isSliding)
-			{
-				anim.SetBool("isSliding", true);
-			}
 			else
 			{
 				anim.SetBool("isSliding", false);
