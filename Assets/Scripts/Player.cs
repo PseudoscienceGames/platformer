@@ -101,27 +101,34 @@ public class Player : MonoBehaviour
 			timeToWallUnstick = 0;
 			return true;
 		}
+		timeSinceGrounded += Time.deltaTime;
 		return false;
 	}
 	void Jump()
 	{
-		if (isGrounded || timeSinceGrounded <= jumpLeeway)
+		if (Mathf.Round(normal.y) >= 0)
 		{
-			velocity.y = maxJumpVelocity;
-			timeSinceGrounded = jumpLeeway + 1;
-		}
-		if (timeToWallUnstick > 0)
-		{
-			timeToWallUnstick = 0;
-			if (Vector3.Angle(normal, input) < 90)
+			if (isGrounded || timeSinceGrounded <= jumpLeeway)
 			{
-				//velocity = normal * wjOut.z;
-				velocity = wjOut;
+				velocity.y = maxJumpVelocity;
+				timeSinceGrounded = jumpLeeway + 1;
 			}
-			else
+			if (timeToWallUnstick > 0)
 			{
-				//velocity = normal * wjUp.z;
-				velocity = wjUp;
+				Vector3 flatNormal = normal;
+				flatNormal.y = 0;
+				flatNormal.Normalize();
+				timeToWallUnstick = 0;
+				if (Vector3.Angle(normal, input) < 90)
+				{
+					velocity = flatNormal * wjOut.z;
+					velocity.y = wjOut.y;
+				}
+				else
+				{
+					velocity = flatNormal * wjUp.z;
+					velocity.y = wjUp.y;
+				}
 			}
 		}
 	}
@@ -135,5 +142,21 @@ public class Player : MonoBehaviour
 			if (velocity.y < -wallSpeed)
 				velocity.y = -wallSpeed;
 		}
+	}
+
+	private void OnTriggerEnter(Collider other)
+	{
+		Debug.Log("Enter");
+		if (other.gameObject.tag == "MovingObj")
+			transform.parent = other.transform.parent;
+		if (other.tag == "Pickup")
+			pe.Pickup(other.gameObject);
+	}
+	private void OnTriggerExit(Collider other)
+	{
+		transform.localScale = Vector3.one;
+		Debug.Log("Exit");
+		if (other.transform.tag == "MovingObj")
+			transform.parent = null;
 	}
 }

@@ -1,15 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerEffects : MonoBehaviour
 {
 	public ParticleSystem ps;
 	public ParticleSystem landingPuff;
-	public GameObject deadPlayer;
 	public Animator anim;
 	public Vector3 velocity;
 	public float animRunSpeed;
+	public int pickups;
+	public Text pickupCount;
 	Player p;
 
 	private void Start()
@@ -17,6 +19,7 @@ public class PlayerEffects : MonoBehaviour
 		p = GetComponent<Player>();
 		Invoke("Respawn", .5f);
 		anim = transform.Find("Char").GetComponent<Animator>();
+		pickupCount = GameObject.Find("PickupCount").GetComponent<Text>();
 	}
 	private void LateUpdate()
 	{
@@ -79,11 +82,11 @@ public class PlayerEffects : MonoBehaviour
 		landingPuff.Emit(50);
 	}
 
-	void Pickup(GameObject pickup)
+	public void Pickup(GameObject pickup)
 	{
-		//pickups++;
-		//pickup.SetActive(false);
-		//pickupCount.text = pickups.ToString();
+		pickups++;
+		pickup.SetActive(false);
+		pickupCount.text = pickups.ToString();
 	}
 	void Die()
 	{
@@ -97,11 +100,6 @@ public class PlayerEffects : MonoBehaviour
 	{
 		transform.Find("Char").gameObject.SetActive(false);
 		velocity = Vector3.zero;
-		GameObject dp = Instantiate(deadPlayer, transform.position, transform.rotation) as GameObject;
-		foreach (Rigidbody rb in dp.GetComponentsInChildren<Rigidbody>())
-		{
-			rb.AddForce(new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f)) * 100);
-		}
 	}
 	void MoveCamera()
 	{

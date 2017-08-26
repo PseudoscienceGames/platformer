@@ -17,6 +17,8 @@ TagManager:
   - Spawn
   - Goal
   - Pickup
+  - FollowTarget
+  - MovingObj
   layers:
   - Default
   - TransparentFX
@@ -32,7 +34,7 @@ TagManager:
   - Pickups
   - Ground
   - Obsticle
-  - 
+  - FollowTarget
   - 
   - 
   - 
