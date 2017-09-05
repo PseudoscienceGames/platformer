@@ -19,7 +19,7 @@ public class PlayerEffects : MonoBehaviour
 		p = GetComponent<Player>();
 		Invoke("Respawn", .5f);
 		anim = transform.Find("Char").GetComponent<Animator>();
-		pickupCount = GameObject.Find("PickupCount").GetComponent<Text>();
+		//pickupCount = GameObject.Find("PickupCount").GetComponent<Text>();
 	}
 	private void LateUpdate()
 	{
@@ -108,6 +108,7 @@ public class PlayerEffects : MonoBehaviour
 	void Respawn()
 	{
 		transform.position = GameObject.FindGameObjectWithTag("Spawn").transform.position;
+		GameObject.Find("CamTarget").transform.position = transform.position;
 		GameObject.Find("Timer").GetComponent<Timer>().Reset();
 		transform.Find("Char").gameObject.SetActive(true);
 		p.enabled = true;

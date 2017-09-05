@@ -146,8 +146,7 @@ public class Player : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-		Debug.Log("Enter");
-		if (other.gameObject.tag == "MovingObj")
+		if (other.tag == "MovingObj")
 			transform.parent = other.transform.parent;
 		if (other.tag == "Pickup")
 			pe.Pickup(other.gameObject);
@@ -155,8 +154,7 @@ public class Player : MonoBehaviour
 	private void OnTriggerExit(Collider other)
 	{
 		transform.localScale = Vector3.one;
-		Debug.Log("Exit");
-		if (other.transform.tag == "MovingObj")
+		if (other.tag == "MovingObj")
 			transform.parent = null;
 	}
 }

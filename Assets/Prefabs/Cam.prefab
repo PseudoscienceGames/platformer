@@ -68,7 +68,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1685105666835134}
   m_LocalRotation: {x: 0.17364816, y: 0, z: 0, w: 0.9848078}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4097604772753112}
@@ -82,7 +82,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1156186703656530}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -5}
+  m_LocalPosition: {x: 0, y: 0, z: -4.45}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4038323767463754}
@@ -110,7 +110,7 @@ Camera:
   m_GameObject: {fileID: 1156186703656530}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -166,12 +166,22 @@ MonoBehaviour:
   player: {fileID: 0}
   camTarget: {fileID: 0}
   pivot: {fileID: 0}
-  smoothTime: 0.1
+  smoothTime: 0.01
+  camTargetSmoothTime: 0.03
   rotSmoothTime: 0.5
   desiredRot: {x: 30, y: 0, z: 0}
   yRotSpeed: 180
   xRotSpeed: 130
   camFollowDistance: 1
+  boxDims: {x: 1.5, y: 0.5, z: 1.5}
+  camEdgeBuffer: 0.5
+  lM:
+    serializedVersion: 2
+    m_Bits: 4294966783
+  localPos: {x: 0, y: 0, z: 0}
+  tempPos: {x: 0, y: 0, z: 0}
+  xShiftSpeed: 0.25
+  maxCamTargetSpeed: 50
 --- !u!124 &124534335219624960
 Behaviour:
   m_ObjectHideFlags: 1
