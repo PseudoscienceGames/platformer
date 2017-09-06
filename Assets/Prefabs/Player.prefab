@@ -324,7 +324,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1591053304737394
 GameObject:
   m_ObjectHideFlags: 1
@@ -1346,13 +1346,13 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 0.625
+  m_Height: 0.5
   m_Radius: 0.25
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.0001
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.3125, z: 0}
+  m_Center: {x: 0, y: 0.25, z: 0}
 --- !u!198 &198555562997712828
 ParticleSystem:
   m_ObjectHideFlags: 1

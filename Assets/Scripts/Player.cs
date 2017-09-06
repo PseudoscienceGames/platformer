@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
 	}
 	void Update()
 	{
-		input = Camera.main.transform.root.TransformDirection(new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")) * moveSpeed);
+		input = Camera.main.transform.root.TransformDirection(new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized * moveSpeed);
 		isGrounded = GroundCheck();
 		if (Input.GetButtonDown("Jump"))
 		{
@@ -119,9 +119,11 @@ public class Player : MonoBehaviour
 				flatNormal.y = 0;
 				flatNormal.Normalize();
 				timeToWallUnstick = 0;
+				velocity = transform.forward * wjOut.z;
+				velocity.y = wjOut.y;
 				if (Vector3.Angle(normal, input) < 90)
 				{
-					velocity = flatNormal * wjOut.z;
+					velocity = Vector3.Lerp(flatNormal, transform.forward, 0.5f) * wjOut.z;
 					velocity.y = wjOut.y;
 				}
 				else

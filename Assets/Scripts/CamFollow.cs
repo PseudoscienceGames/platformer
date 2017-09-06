@@ -7,24 +7,19 @@ public class CamFollow : MonoBehaviour
 	public Player player;
 	public Transform camTarget;
 	public Transform pivot;
-	public float smoothTime = 0.3F;
-	public float camTargetSmoothTime;
-	public float rotSmoothTime;
-	public Vector3 desiredRot;
-	private Vector3 velocity = Vector3.zero;
-	private Vector3 camTargetVelocity = Vector3.zero;
-	private Vector3 rotVel = Vector3.zero;
-	private Vector3 offset;
+	public float smoothTimeX = 0.075F;
+	public float smoothTimeY = 0.075F;
+	public float smoothTimeZ = 0.075F;
+	private float velocityX = 0;
+	private float velocityY = 0;
+	private float velocityZ = 0;
 	public float yRotSpeed;
 	public float xRotSpeed;
-	public float camFollowDistance;
 	public Vector3 boxDims;
-	public float camEdgeBuffer;
 	public LayerMask lM;
 	public Vector3 localPos;
 	public Vector3 tempPos;
 	public float xShiftSpeed;
-	public float maxCamTargetSpeed;
 	public float turnAngle;
 
 	private void Start()
@@ -45,20 +40,12 @@ public class CamFollow : MonoBehaviour
 		CheckZ();
 		CheckX();
 
-		camTarget.position = Vector3.Lerp(camTarget.position, tempPos, maxCamTargetSpeed);
-		transform.position = Vector3.SmoothDamp(transform.position, camTarget.position, ref velocity, smoothTime);
-
-
-		//RaycastHit hit;
-		//Ray ray = new Ray(camTarget.position, Camera.main.transform.position - camTarget.position);
-		//if (Physics.Raycast(ray, out hit, Vector3.Distance(camTarget.position, Camera.main.transform.position)) && pivot.localEulerAngles.x < 90)
-		//{
-		//	pivot.transform.Rotate(Vector3.right * Time.deltaTime * yRotSpeed);
-		//	Debug.DrawLine(ray.origin, hit.point, Color.red, 1000);
-		//}
-
-		//else if (pivot.localEulerAngles.x > desiredRot.x)
-		//	pivot.transform.Rotate(Vector3.right * Time.deltaTime * -yRotSpeed);
+		camTarget.position = tempPos;// Vector3.MoveTowards(camTarget.position, tempPos, camTargetSmoothTime);
+		Vector3 newPos = transform.position;
+		newPos.x = Mathf.SmoothDamp(newPos.x, camTarget.position.x, ref velocityX, smoothTimeX);
+		newPos.y = Mathf.SmoothDamp(newPos.y, camTarget.position.y, ref velocityY, smoothTimeY);
+		newPos.z = Mathf.SmoothDamp(newPos.z, camTarget.position.z, ref velocityZ, smoothTimeZ);
+		transform.position = newPos;
 
 	}
 
@@ -69,36 +56,38 @@ public class CamFollow : MonoBehaviour
 		if (Physics.Raycast(ray, out hit, boxDims.x, lM) && Vector3.Angle(Vector3.up, hit.normal) == 90f)
 		{
 			Debug.DrawLine(ray.origin, hit.point, Color.red, 1000f);
-			tempPos -= transform.right * (boxDims.x - hit.distance) * xShiftSpeed;
+			ray.origin = ray.origin + (Vector3.up * boxDims.y);
+			if (Physics.Raycast(ray, out hit, boxDims.x, lM) && Vector3.Angle(Vector3.up, hit.normal) == 90f)
+			{
+				tempPos -= transform.right * (boxDims.x - hit.distance) * xShiftSpeed;
+			}
 		}
-		ray.direction = -transform.right;
+		ray = new Ray(camTarget.position + (Vector3.up * player.GetComponent<CharacterController>().height), -transform.right);
 		if (Physics.Raycast(ray, out hit, boxDims.x, lM) && Vector3.Angle(Vector3.up, hit.normal) == 90f)
 		{
 			Debug.DrawLine(ray.origin, hit.point, Color.red, 1000f);
-			tempPos += transform.right * (boxDims.x - hit.distance) * xShiftSpeed;
+			ray.origin = ray.origin + (Vector3.up * boxDims.y);
+			if (Physics.Raycast(ray, out hit, boxDims.x, lM) && Vector3.Angle(Vector3.up, hit.normal) == 90f)
+			{
+				tempPos += transform.right * (boxDims.x - hit.distance) * xShiftSpeed;
+			}
 		}
 	}
 
 	void CheckY()
 	{
-		//RaycastHit hit;
-		//Ray ray = new Ray(camTarget.position + (Vector3.up * boxDims.y), -Vector3.up);
-
-		//if (player.isGrounded)
-		//{
-		//	if (Physics.Raycast(ray, out hit, 10, lM) && hit.distance < boxDims.y * .95f)
-		//		tempPos.y = hit.point.y;
-		//	else
-		//		tempPos.y = player.transform.position.y;
-
-		//}
-		//else 
-		if (localPos.y > boxDims.y * 2f)
-			tempPos += transform.up * (localPos.y - (boxDims.y * 2f));
+		RaycastHit hit;
+		Vector3 origin = player.transform.position;
+		origin.y = camTarget.position.y + boxDims.y;
+		Ray ray = new Ray(origin, -Vector3.up);
+		if (localPos.y > boxDims.y)
+			tempPos += transform.up * (localPos.y - (boxDims.y));
 		else if (localPos.y < 0)
 			tempPos += transform.up * localPos.y;
+		if (player.isGrounded && Physics.Raycast(ray, out hit, boxDims.y, lM))
+			tempPos.y += player.transform.position.y - tempPos.y;
 	}
-	//kasldjfhglksjdfhglksjdhfglkjsdhfglksjdhfglkjsdhfglkjsdhfg
+
 	void CheckZ()
 	{
 		Vector3 flatLocalPos = new Vector3(localPos.x, 0, localPos.z);
@@ -118,17 +107,14 @@ public class CamFollow : MonoBehaviour
 			onEllipse.z *= -1;
 		onEllipse = camTarget.TransformPoint(onEllipse);
 		onEllipse.y = 0f;
-		Debug.Log(flatLocalPos.magnitude + " " + onEllipse.magnitude);
-		if (flatLocalPos.magnitude > onEllipse.magnitude)
+		Vector3 flatOnEllipse = camTarget.InverseTransformPoint(onEllipse);
+		flatOnEllipse.y = 0;
+		if (flatLocalPos.magnitude >= flatOnEllipse.magnitude)
 		{
-			Debug.DrawLine(player.transform.position, onEllipse, Color.red, 1000f);
 			Vector3 pos = player.transform.position;
 			pos = pos - onEllipse;
 			pos.y = 0;
-			//	//pos = camTarget.TransformPoint(pos);
-			//	pos = player.transform.position - pos;
-			//	pos.y = 0;
 			tempPos += pos;
-			}
 		}
+	}
 }
