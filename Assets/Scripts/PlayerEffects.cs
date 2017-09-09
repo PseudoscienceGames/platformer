@@ -79,17 +79,20 @@ public class PlayerEffects : MonoBehaviour
 
 	public void Land()
 	{
+		Debug.Log("LAND");
 		landingPuff.Emit(50);
 	}
 
 	public void Pickup(GameObject pickup)
 	{
+		Debug.Log("PICKUP");
 		pickups++;
 		pickup.SetActive(false);
 		pickupCount.text = pickups.ToString();
 	}
 	void Die()
 	{
+		Debug.Log("DIE");
 		Explode();
 		Invoke("MoveCamera", 0.5f);
 		Invoke("Respawn", 1);
@@ -98,15 +101,18 @@ public class PlayerEffects : MonoBehaviour
 	}
 	void Explode()
 	{
+		Debug.Log("Explode");
 		transform.Find("Char").gameObject.SetActive(false);
 		velocity = Vector3.zero;
 	}
 	void MoveCamera()
 	{
+		Debug.Log("MOVECAMERA");
 		transform.position = GameObject.FindGameObjectWithTag("Spawn").transform.position;
 	}
 	void Respawn()
 	{
+		Debug.Log("RESPAWN");
 		transform.position = GameObject.FindGameObjectWithTag("Spawn").transform.position;
 		GameObject.Find("CamTarget").transform.position = transform.position;
 		GameObject.Find("Timer").GetComponent<Timer>().Reset();
@@ -115,6 +121,7 @@ public class PlayerEffects : MonoBehaviour
 	}
 	void Win(Goal goal)
 	{
+		Debug.Log("WIN");
 		anim.SetBool("Stop", true);
 		ps.Pause();
 		landingPuff.Pause();
@@ -125,6 +132,7 @@ public class PlayerEffects : MonoBehaviour
 
 	public void Slide()
 	{
+		Debug.Log("SLIDE");
 		anim.SetBool("isSliding", true);
 	}
 }

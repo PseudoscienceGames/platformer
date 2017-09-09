@@ -42,7 +42,10 @@ public class Player : MonoBehaviour
 	}
 	void Update()
 	{
-		input = Camera.main.transform.root.TransformDirection(new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized * moveSpeed);
+		input = Camera.main.transform.TransformDirection(new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")));
+		if (input.magnitude > 1f)
+			input = input.normalized;
+		input *= moveSpeed;
 		isGrounded = GroundCheck();
 		if (Input.GetButtonDown("Jump"))
 		{

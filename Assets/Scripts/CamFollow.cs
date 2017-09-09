@@ -46,7 +46,29 @@ public class CamFollow : MonoBehaviour
 		newPos.y = Mathf.SmoothDamp(newPos.y, camTarget.position.y, ref velocityY, smoothTimeY);
 		newPos.z = Mathf.SmoothDamp(newPos.z, camTarget.position.z, ref velocityZ, smoothTimeZ);
 		transform.position = newPos;
+		CheckZPivot();
 
+	}
+
+	void CheckZPivot()
+	{
+		//Transform lOS = GameObject.Find("LOSCheck").transform;
+		//Ray rayTop = new Ray((lOS.position + (Vector3.up * 0.25f)), Camera.main.transform.position );
+		//Ray rayMid = new Ray(lOS.position, Camera.main.transform.position);
+		//Ray rayBot = new Ray((lOS.position - (Vector3.up * 0.25f)), Camera.main.transform.position);
+		//RaycastHit hitTop;
+		//RaycastHit hitMid;
+		//RaycastHit hitBot;
+
+		//if (Physics.Raycast(rayMid, out hitMid) && hitMid.transform.gameObject.tag != "Player")
+		//{
+		//	Debug.DrawLine(rayMid.origin, hitMid.point, Color.red, 1000f);
+		//	if (Physics.Raycast(rayTop, out hitTop))
+		//		Debug.DrawLine(rayTop.origin, hitTop.point, Color.red, 1000f);
+		//	 if(Physics.Raycast(rayBot, out hitBot))
+		//		Debug.DrawLine(rayBot.origin, hitBot.point, Color.red, 1000f);
+		//	Debug.Break();
+		//}
 	}
 
 	void CheckX()
