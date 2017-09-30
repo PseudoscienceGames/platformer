@@ -142,7 +142,7 @@ public class Player : MonoBehaviour
 		normal = hit.normal;
 		if (Vector3.Angle(normal, Vector3.up) > pc.slopeLimit)
 		{
-			pe.ps.Emit(1);
+			//pe.ps.Emit(1);
 			timeToWallUnstick = wallStickTime;
 			if (velocity.y < -wallSpeed)
 				velocity.y = -wallSpeed;
@@ -151,6 +151,7 @@ public class Player : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
+		Debug.Log(other.tag);
 		if (other.tag == "MovingObj")
 			transform.parent = other.transform.parent;
 		if (other.tag == "Pickup")

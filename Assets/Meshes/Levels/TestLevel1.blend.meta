@@ -1,0 +1,168 @@
+fileFormatVersion: 2
+guid: 621523e2f73d55a47ad8a5910f2cf847
+timeCreated: 1505426568
+licenseType: Free
+ModelImporter:
+  serializedVersion: 21
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: TestLevel1
+    100004: TestLevel1Col
+    100006: TestLevel1_001
+    100008: TestLevel1Col_001
+    100010: Stairs
+    100012: StairsCol
+    100014: StairsTrigger
+    100016: TestLevel11
+    100018: Building1
+    100020: Building1Col
+    100022: Building2
+    100024: Building2Col
+    100026: TestLevel1Col_002
+    100028: OuterCity
+    100030: OuterCity_MeshPart0
+    100032: OuterCity_MeshPart1
+    400000: //RootNode
+    400002: TestLevel1
+    400004: TestLevel1Col
+    400006: TestLevel1_001
+    400008: TestLevel1Col_001
+    400010: Stairs
+    400012: StairsCol
+    400014: StairsTrigger
+    400016: TestLevel11
+    400018: Building1
+    400020: Building1Col
+    400022: Building2
+    400024: Building2Col
+    400026: TestLevel1Col_002
+    400028: OuterCity
+    400030: OuterCity_MeshPart0
+    400032: OuterCity_MeshPart1
+    2300000: //RootNode
+    2300002: TestLevel1
+    2300004: TestLevel1Col
+    2300006: TestLevel1_001
+    2300008: TestLevel1Col_001
+    2300010: Stairs
+    2300012: StairsCol
+    2300014: StairsTrigger
+    2300016: TestLevel11
+    2300018: Building1
+    2300020: Building1Col
+    2300022: Building2
+    2300024: Building2Col
+    2300026: TestLevel1Col_002
+    2300028: OuterCity_MeshPart0
+    2300030: OuterCity_MeshPart1
+    2300032: OuterCity
+    3300000: //RootNode
+    3300002: TestLevel1
+    3300004: TestLevel1Col
+    3300006: TestLevel1_001
+    3300008: TestLevel1Col_001
+    3300010: Stairs
+    3300012: StairsCol
+    3300014: StairsTrigger
+    3300016: TestLevel11
+    3300018: Building1
+    3300020: Building1Col
+    3300022: Building2
+    3300024: Building2Col
+    3300026: TestLevel1Col_002
+    3300028: OuterCity_MeshPart0
+    3300030: OuterCity_MeshPart1
+    3300032: OuterCity
+    4300000: TestLevel1
+    4300002: TestLevel1Col
+    4300004: TestLevel1_001
+    4300006: TestLevel1Col_001
+    4300008: Stairs
+    4300010: StairsCol
+    4300012: StairsTrigger
+    4300014: TestLevel11
+    4300016: Building1
+    4300018: Building1Col
+    4300020: Building2
+    4300022: Building2Col
+    4300024: TestLevel1Col_002
+    4300026: OuterCity_MeshPart0
+    4300028: OuterCity_MeshPart1
+    4300030: OuterCity
+    7400000: Default Take
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

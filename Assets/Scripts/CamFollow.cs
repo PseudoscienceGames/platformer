@@ -43,7 +43,11 @@ public class CamFollow : MonoBehaviour
 		camTarget.position = tempPos;// Vector3.MoveTowards(camTarget.position, tempPos, camTargetSmoothTime);
 		Vector3 newPos = transform.position;
 		newPos.x = Mathf.SmoothDamp(newPos.x, camTarget.position.x, ref velocityX, smoothTimeX);
-		newPos.y = Mathf.SmoothDamp(newPos.y, camTarget.position.y, ref velocityY, smoothTimeY);
+		float tempSmoothTimeY = smoothTimeY;
+		if (localPos.y < 0)
+			tempSmoothTimeY *= 0.5f;
+
+		newPos.y = Mathf.SmoothDamp(newPos.y, camTarget.position.y, ref velocityY, tempSmoothTimeY);
 		newPos.z = Mathf.SmoothDamp(newPos.z, camTarget.position.z, ref velocityZ, smoothTimeZ);
 		transform.position = newPos;
 		CheckZPivot();
