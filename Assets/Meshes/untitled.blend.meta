@@ -1,46 +1,27 @@
 fileFormatVersion: 2
-guid: 0c1d753ced62c724483e0984beffe0b5
-timeCreated: 1506106110
+guid: c0a298536e9b0a442a9c317bb654fb1b
+timeCreated: 1508028137
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
-    100000: A_Tree2_000
-    100002: A_Tree2_001
-    100004: A_Tree2_001_MeshPart0
-    100006: A_Tree2_001_MeshPart1
-    100008: A_Tree2_002
-    100010: //RootNode
-    100012: A_Tree2_002_MeshPart0
-    100014: A_Tree2_002_MeshPart1
-    400000: A_Tree2_000
-    400002: A_Tree2_001
-    400004: A_Tree2_001_MeshPart0
-    400006: A_Tree2_001_MeshPart1
-    400008: A_Tree2_002
-    400010: //RootNode
-    400012: A_Tree2_002_MeshPart0
-    400014: A_Tree2_002_MeshPart1
-    2300000: A_Tree2_000
-    2300002: A_Tree2_001_MeshPart0
-    2300004: A_Tree2_001_MeshPart1
-    2300006: A_Tree2_002
-    2300008: //RootNode
-    2300010: A_Tree2_002_MeshPart0
-    2300012: A_Tree2_002_MeshPart1
-    3300000: A_Tree2_000
-    3300002: A_Tree2_001_MeshPart0
-    3300004: A_Tree2_001_MeshPart1
-    3300006: A_Tree2_002
-    3300008: //RootNode
-    3300010: A_Tree2_002_MeshPart0
-    3300012: A_Tree2_002_MeshPart1
-    4300000: A_Tree2_002
-    4300002: A_Tree2_001_MeshPart0
-    4300004: A_Tree2_001_MeshPart1
-    4300006: A_Tree2_000
-    4300008: A_Tree2_002_MeshPart0
-    4300010: A_Tree2_002_MeshPart1
+    100000: //RootNode
+    100002: Plane_MeshPart0
+    100004: Plane_MeshPart1
+    400000: //RootNode
+    400002: Plane_MeshPart0
+    400004: Plane_MeshPart1
+    2300000: //RootNode
+    2300002: Plane_MeshPart0
+    2300004: Plane_MeshPart1
+    3300000: //RootNode
+    3300002: Plane_MeshPart0
+    3300004: Plane_MeshPart1
+    4300000: Plane
+    4300002: Plane_MeshPart0
+    4300004: Plane_MeshPart1
+    4300006: Terrain
+    4300008: Terrain_002
     7400000: Default Take
     9500000: //RootNode
   materials:
@@ -89,7 +70,7 @@ ModelImporter:
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
-    normalSmoothAngle: 0
+    normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
