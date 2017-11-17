@@ -7,8 +7,8 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: GRid 1
-  m_Shader: {fileID: 4800000, guid: 0be9213640d1b8546b083609a771f5eb, type: 3}
-  m_ShaderKeywords: X _ALPHAPREMULTIPLY_ON _EMISSION
+  m_Shader: {fileID: 4800000, guid: 0e24581d7becab643b6ed12aae29fb17, type: 3}
+  m_ShaderKeywords: _ALPHAPREMULTIPLY_ON _EMISSION
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -62,12 +62,12 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _LineDensity: 100
-    - _LineThickness: 4.5
+    - _LineDensity: 1
+    - _LineThickness: 7.6
     - _Metallic: 0
     - _Mode: 3
     - _OcclusionStrength: 1
-    - _Outline: 0.0237
+    - _Outline: 0.001
     - _Parallax: 0.02
     - _ShowBackFaces: 0
     - _SmoothnessTextureChannel: 0
@@ -75,9 +75,9 @@ Material:
     - _Speed: 0.1
     - _SrcBlend: 1
     - _UVSec: 0
-    - _X: 0
-    - _Y: 1
-    - _Z: 0
+    - _X: 1
+    - _Y: 0
+    - _Z: 1
     - _ZWrite: 0
     m_Colors:
     - _Color: {r: 1, g: 0, b: 0, a: 0.284}
