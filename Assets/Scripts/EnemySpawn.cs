@@ -5,11 +5,11 @@ using UnityEngine;
 public class EnemySpawn : MonoBehaviour {
 
 	public GameObject enemy;
-	public float timer;
+	public float time;
 
 	// Use this for initialization
 	void Start () {
-		InvokeRepeating("Spawn", 0, 1);
+		InvokeRepeating("Spawn", 0, time);
 	}
 
 	void Spawn()
