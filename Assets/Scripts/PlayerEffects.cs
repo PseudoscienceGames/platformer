@@ -82,7 +82,7 @@ public class PlayerEffects : MonoBehaviour
 	{
 		Debug.Log("LAND");
 		//landingPuff.Emit(25);
-		GetComponent<AudioSource>().Play();
+		//GetComponent<AudioSource>().Play();
 	}
 
 	public void Pickup(GameObject pickup)

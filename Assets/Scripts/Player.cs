@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
 	public bool isGrounded;
 	public bool wasGrounded = true;
 	PlayerEffects pe;
+	Transform cam;
 
 	void Start()
 	{
@@ -39,10 +40,11 @@ public class Player : MonoBehaviour
 		gravity = -(2 * maxJumpHeight) / Mathf.Pow(timeToJumpApex, 2);
 		maxJumpVelocity = Mathf.Abs(gravity * timeToJumpApex);
 		minJumpVelocity = Mathf.Sqrt(2 * Mathf.Abs(gravity) * minJumpHeight);
+		cam = Camera.main.transform.parent.parent;
 	}
 	void Update()
 	{
-		input = Camera.main.transform.TransformDirection(new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")));
+		input = cam.TransformDirection(new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")));
 		if (input.magnitude > 1f)
 			input = input.normalized;
 		input *= moveSpeed;

@@ -30,10 +30,15 @@ public class CamFollow : MonoBehaviour
 		camTarget.position = player.transform.position;
 	}
 
+	private void OnGUI()
+	{
+		Cursor.lockState = CursorLockMode.Locked;
+	}
+
 	void LateUpdate()
 	{
-		transform.Rotate(Vector3.up * Time.deltaTime * yRotSpeed * Input.GetAxis("TurnCamY"));
-		float rot = pivot.localEulerAngles.x + (Time.deltaTime * xRotSpeed * Input.GetAxis("TurnCamX"));
+		transform.Rotate(Vector3.up * Time.deltaTime * yRotSpeed * Input.GetAxis("Mouse X"));
+		float rot = pivot.localEulerAngles.x + (Time.deltaTime * xRotSpeed * -Input.GetAxis("Mouse Y"));
 		pivot.localEulerAngles = new Vector3(Mathf.Clamp(rot, 0, 85), 0, 0);
 		camTarget.rotation = transform.rotation;
 		localPos = camTarget.InverseTransformPoint(player.transform.position);
