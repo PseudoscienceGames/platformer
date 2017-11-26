@@ -80,6 +80,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4910559011388792}
   - component: {fileID: 137048633705206992}
+  - component: {fileID: 114692628795016502}
   m_Layer: 9
   m_Name: Sphere
   m_TagString: Untagged
@@ -551,7 +552,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1365461210414348}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.83, y: 3.37, z: 2}
+  m_LocalPosition: {x: 0, y: 0, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4238008926325572}
@@ -1431,7 +1432,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 2
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 1, b: 1, a: 1}
   m_Intensity: 2.95
   m_Range: 0.78
   m_SpotAngle: 20
@@ -1540,6 +1541,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   nav: {fileID: 0}
+--- !u!114 &114692628795016502
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1098488127988220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecda8269981559f439c66f79e4cb6efb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114755393518268522
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1565,7 +1577,7 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: e237ea8b4a1f9984988b95c514100500, type: 2}
+  - {fileID: 2100000, guid: cf93a82743942d240a8d6fb3a4d973ac, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1619,7 +1631,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 20
+  m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

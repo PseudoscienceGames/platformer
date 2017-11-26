@@ -10,12 +10,10 @@ public class Enemy : MonoBehaviour {
 	void Start () {
 		player = GameObject.Find("Player").transform;
 		nav = GetComponent<NavMeshAgent>();
-		InvokeRepeating("CalcPath", 0, 1);
 	}
 	
 	// Update is called once per frame
-	void CalcPath()
-	{
+	void Update () {
 		nav.SetDestination(player.position);
 	}
 }
