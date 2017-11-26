@@ -151,7 +151,7 @@ public class Player : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-		Debug.Log(other.tag);
+		//Debug.Log(other.tag);
 		if (other.tag == "MovingObj")
 			transform.parent = other.transform.parent;
 		if (other.tag == "Pickup")

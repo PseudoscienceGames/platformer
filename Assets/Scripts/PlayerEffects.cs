@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerEffects : MonoBehaviour
 {
-	public ParticleSystem ps;
+	//public ParticleSystem ps;
 	//public ParticleSystem landingPuff;
 	public Animator anim;
 	public Vector3 velocity;
@@ -26,12 +26,12 @@ public class PlayerEffects : MonoBehaviour
 		velocity = p.velocity;
 		if (p.isGrounded)
 		{
-			if (!ps.isEmitting && (new Vector3(velocity.x, 0, velocity.z)).magnitude > 5)
-				ps.Play();
-			if (ps.isEmitting && (new Vector3(velocity.x, 0, velocity.z)).magnitude <= 5)
-				ps.Stop();
-			else
-			{
+			//if (!ps.isEmitting && (new Vector3(velocity.x, 0, velocity.z)).magnitude > 5)
+			//	ps.Play();
+			//if (ps.isEmitting && (new Vector3(velocity.x, 0, velocity.z)).magnitude <= 5)
+			//	ps.Stop();
+			//else
+			//{
 				anim.SetBool("isSliding", false);
 				
 				anim.SetBool("isJumping", false);
@@ -45,12 +45,12 @@ public class PlayerEffects : MonoBehaviour
 					anim.SetBool("isRunning", false);
 					anim.SetFloat("Speed", 1);
 				}
-			}
+			//}
 		}
 		else
 		{
-			if (ps.isEmitting)
-				ps.Stop();
+			//if (ps.isEmitting)
+			//	ps.Stop();
 			anim.SetBool("isJumping", true);
 		}
 		if (Input.GetButtonDown("Jump"))
@@ -79,7 +79,7 @@ public class PlayerEffects : MonoBehaviour
 
 	public void Land()
 	{
-		Debug.Log("LAND");
+		//Debug.Log("LAND");
 		//landingPuff.Emit(25);
 	}
 
