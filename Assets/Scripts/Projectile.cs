@@ -5,43 +5,27 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
 	public float force;
-	public float lifespan;
-	public bool grav;
-	public float damage;
 
 	void Start ()
 	{
-		Rigidbody rb = GetComponent<Rigidbody>();
-		rb.useGravity = grav;
-		rb.AddForce(transform.forward * force);
+		GetComponent<Rigidbody>().AddForce(transform.forward * force);
 		StartCoroutine("Timer");
 	}
 
-	public virtual void OnCollisionEnter(Collision collision)
+	private void OnCollisionEnter(Collision collision)
 	{
-		Hit(collision.gameObject);
+		Destroy(gameObject);
 	}
 
 	IEnumerator Timer()
 	{
-		float time = lifespan;
+		float time = 2;
 		while(time > 0)
 		{
 			time -= Time.deltaTime;
 			yield return null;
 		}
-		Hit(null);
-		yield return null;
-	}
-
-	public virtual void Hit(GameObject hit)
-	{
-		Debug.Log(hit);
-		if (hit != null)
-		{
-			if (hit.tag == "Enemy")
-				hit.GetComponent<Enemy>().TakeDamage(damage);
-		}
 		Destroy(gameObject);
+		yield return null;
 	}
 }

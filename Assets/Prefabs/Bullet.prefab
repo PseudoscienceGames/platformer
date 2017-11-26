@@ -141,9 +141,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 2000
-  lifespan: 2
-  grav: 0
-  damage: 5
 --- !u!136 &136303505881319364
 CapsuleCollider:
   m_ObjectHideFlags: 1

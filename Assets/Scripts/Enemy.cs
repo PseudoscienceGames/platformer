@@ -3,28 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy : MonoBehaviour
-{
+public class Enemy : MonoBehaviour {
 	public Transform player;
 	public NavMeshAgent nav;
-	public float hp;
-
-	void Start ()
-	{
+	// Use this for initialization
+	void Start () {
 		player = GameObject.Find("Player").transform;
 		nav = GetComponent<NavMeshAgent>();
-		InvokeRepeating("CalcPath", 0, .1f);
+		InvokeRepeating("CalcPath", 0, 1);
 	}
 	
+	// Update is called once per frame
 	void CalcPath()
 	{
 		nav.SetDestination(player.position);
-	}
-
-	public void TakeDamage(float damage)
-	{
-		hp -= damage;
-		if (hp <= 0)
-			Destroy(gameObject);
 	}
 }
