@@ -12,7 +12,6 @@ public class PlayerEffects : MonoBehaviour
 	public float animRunSpeed;
 	public int pickups;
 	public Text pickupCount;
-	public AudioSource c;
 	Player p;
 
 	private void Start()
@@ -82,7 +81,6 @@ public class PlayerEffects : MonoBehaviour
 	{
 		Debug.Log("LAND");
 		//landingPuff.Emit(25);
-		GetComponent<AudioSource>().Play();
 	}
 
 	public void Pickup(GameObject pickup)
