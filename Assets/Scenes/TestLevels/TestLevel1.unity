@@ -329,7 +329,7 @@ Transform:
   m_GameObject: {fileID: 387904325}
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
   m_LocalPosition: {x: 0, y: -13.560001, z: -7.998001}
-  m_LocalScale: {x: 1, y: 1.3, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 603497442}
   m_RootOrder: 7
@@ -671,7 +671,7 @@ Transform:
   m_GameObject: {fileID: 967667385}
   m_LocalRotation: {x: -0, y: 0.50000006, z: -0, w: 0.8660254}
   m_LocalPosition: {x: 6.9264736, y: -1.5500002, z: 3.998993}
-  m_LocalScale: {x: 1, y: 1.3, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 603497442}
   m_RootOrder: 3
@@ -728,7 +728,7 @@ Transform:
   m_GameObject: {fileID: 1066124907}
   m_LocalRotation: {x: -0, y: 0.86602545, z: -0, w: 0.49999994}
   m_LocalPosition: {x: 6.9264717, y: 1.4900002, z: -3.9990082}
-  m_LocalScale: {x: 1, y: 1.3, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 603497442}
   m_RootOrder: 2
@@ -804,6 +804,21 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: dde9e058edd496b4b934cf4dd76ef888, type: 2}
+    - target: {fileID: 96032546608156232, guid: 2db8581323add514d89c31f8dc10e5a5,
+        type: 2}
+      propertyPath: m_Time
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114403928584961702, guid: 2db8581323add514d89c31f8dc10e5a5,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 96032546608156232, guid: 2db8581323add514d89c31f8dc10e5a5,
+        type: 2}
+      propertyPath: m_MinVertexDistance
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2db8581323add514d89c31f8dc10e5a5, type: 2}
   m_IsPrefabParent: 0
@@ -874,12 +889,12 @@ Prefab:
     - target: {fileID: 224722670745942010, guid: c84fa585951272f419587626bfaa8b71,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 623
+      value: 630
       objectReference: {fileID: 0}
     - target: {fileID: 224722670745942010, guid: c84fa585951272f419587626bfaa8b71,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 347.6
+      value: 351.6
       objectReference: {fileID: 0}
     - target: {fileID: 224367466387776798, guid: c84fa585951272f419587626bfaa8b71,
         type: 2}
@@ -919,7 +934,7 @@ Transform:
   m_GameObject: {fileID: 1497967118}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -4.5099998, z: 7.998001}
-  m_LocalScale: {x: 1, y: 1.3, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 603497442}
   m_RootOrder: 4
@@ -1003,7 +1018,7 @@ Transform:
   m_GameObject: {fileID: 1557880696}
   m_LocalRotation: {x: -0, y: -0.86602545, z: -0, w: 0.49999994}
   m_LocalPosition: {x: -6.9264717, y: -10.51, z: -3.9990082}
-  m_LocalScale: {x: 1, y: 1.3, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 603497442}
   m_RootOrder: 6
@@ -1111,7 +1126,7 @@ Transform:
   m_GameObject: {fileID: 1583431623}
   m_LocalRotation: {x: -0, y: -0.49999994, z: -0, w: 0.86602545}
   m_LocalPosition: {x: -6.9264717, y: -7.4999995, z: 3.9990082}
-  m_LocalScale: {x: 1, y: 1.3, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 603497442}
   m_RootOrder: 5
@@ -1272,7 +1287,7 @@ Transform:
   m_GameObject: {fileID: 1757628762}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: -0.00000008940697}
   m_LocalPosition: {x: -0, y: 4.49, z: -7.998001}
-  m_LocalScale: {x: 1, y: 1.3, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 603497442}
   m_RootOrder: 1
@@ -1463,7 +1478,7 @@ Transform:
   m_GameObject: {fileID: 2018117398}
   m_LocalRotation: {x: -0, y: 0.8660253, z: -0, w: -0.5000001}
   m_LocalPosition: {x: -6.9264717, y: 7.52, z: -3.998993}
-  m_LocalScale: {x: 1, y: 1.3, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 603497442}
   m_RootOrder: 0
