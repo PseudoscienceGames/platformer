@@ -19,6 +19,7 @@ TagManager:
   - Pickup
   - FollowTarget
   - MovingObj
+  - LOSCheck
   layers:
   - Default
   - TransparentFX

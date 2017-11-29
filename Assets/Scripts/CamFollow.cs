@@ -7,6 +7,7 @@ public class CamFollow : MonoBehaviour
 	public Player player;
 	public Transform camTarget;
 	public Transform pivot;
+	public Transform focalPoint;
 	public float smoothTimeX = 0.075F;
 	public float smoothTimeY = 0.075F;
 	public float smoothTimeZ = 0.075F;
@@ -38,7 +39,7 @@ public class CamFollow : MonoBehaviour
 		tempPos = camTarget.position;
 		CheckY();
 		CheckZ();
-		CheckX();
+		//CheckX();
 
 		camTarget.position = tempPos;// Vector3.MoveTowards(camTarget.position, tempPos, camTargetSmoothTime);
 		Vector3 newPos = transform.position;
@@ -56,23 +57,31 @@ public class CamFollow : MonoBehaviour
 
 	void CheckZPivot()
 	{
-		//Transform lOS = GameObject.Find("LOSCheck").transform;
-		//Ray rayTop = new Ray((lOS.position + (Vector3.up * 0.25f)), Camera.main.transform.position );
-		//Ray rayMid = new Ray(lOS.position, Camera.main.transform.position);
-		//Ray rayBot = new Ray((lOS.position - (Vector3.up * 0.25f)), Camera.main.transform.position);
-		//RaycastHit hitTop;
-		//RaycastHit hitMid;
-		//RaycastHit hitBot;
-
-		//if (Physics.Raycast(rayMid, out hitMid) && hitMid.transform.gameObject.tag != "Player")
-		//{
-		//	Debug.DrawLine(rayMid.origin, hitMid.point, Color.red, 1000f);
-		//	if (Physics.Raycast(rayTop, out hitTop))
-		//		Debug.DrawLine(rayTop.origin, hitTop.point, Color.red, 1000f);
-		//	 if(Physics.Raycast(rayBot, out hitBot))
-		//		Debug.DrawLine(rayBot.origin, hitBot.point, Color.red, 1000f);
-		//	Debug.Break();
-		//}
+		RaycastHit hit;
+		Ray fromPlayer = new Ray(focalPoint.position, Camera.main.transform.position - focalPoint.position);
+		if (Physics.Raycast(fromPlayer, out hit, 20, lM))
+		{
+			if(hit.transform.tag != "LOSCheck")
+			{
+				Debug.Log(hit.transform.tag);
+				bool found = false;
+				float angle = 5f;
+				int m = 1;
+				//while (!found)
+				//{
+					//m = (m + (m/Mathf.Abs(m))) * -1;
+					pivot.Rotate(pivot.right, m * angle, Space.World);
+					fromPlayer = new Ray(focalPoint.position, Camera.main.transform.position - focalPoint.position);
+					if (Physics.Raycast(fromPlayer, out hit))
+					{
+						if (hit.transform.tag == "LOSCheck")
+						{
+							found = true;
+						}
+					}
+				//}
+			}
+		}
 	}
 
 	void CheckX()

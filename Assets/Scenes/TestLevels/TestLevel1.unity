@@ -1197,21 +1197,30 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 23497304721383272, guid: 9761b9eeff7baee478f64af36c077d09,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: ddd357ee09f7c5d4098f07d580698cb8, type: 2}
-    - target: {fileID: 20181184771657444, guid: 9761b9eeff7baee478f64af36c077d09,
-        type: 2}
-      propertyPath: m_TargetTexture
-      value: 
-      objectReference: {fileID: 1554858488}
     - target: {fileID: 20113315226859500, guid: 9761b9eeff7baee478f64af36c077d09,
         type: 2}
       propertyPath: m_TargetTexture
       value: 
       objectReference: {fileID: 109506731}
+    - target: {fileID: 20181184771657444, guid: 9761b9eeff7baee478f64af36c077d09,
+        type: 2}
+      propertyPath: m_TargetTexture
+      value: 
+      objectReference: {fileID: 1554858488}
+    - target: {fileID: 23497304721383272, guid: 9761b9eeff7baee478f64af36c077d09,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ddd357ee09f7c5d4098f07d580698cb8, type: 2}
+    - target: {fileID: 114523925957150920, guid: 9761b9eeff7baee478f64af36c077d09,
+        type: 2}
+      propertyPath: focalPoint
+      value: 
+      objectReference: {fileID: 1890953158}
+    - target: {fileID: 1002107166267258, guid: 9761b9eeff7baee478f64af36c077d09, type: 2}
+      propertyPath: m_TagString
+      value: LOSCheck
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9761b9eeff7baee478f64af36c077d09, type: 2}
   m_IsPrefabParent: 0
@@ -1319,6 +1328,11 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!4 &1890953158 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4010390058034520, guid: 2db8581323add514d89c31f8dc10e5a5,
+    type: 2}
+  m_PrefabInternal: {fileID: 1359856387}
 --- !u!1001 &1947395239
 Prefab:
   m_ObjectHideFlags: 0

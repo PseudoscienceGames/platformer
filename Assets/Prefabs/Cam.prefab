@@ -402,6 +402,7 @@ MonoBehaviour:
   player: {fileID: 0}
   camTarget: {fileID: 0}
   pivot: {fileID: 0}
+  focalPoint: {fileID: 0}
   smoothTimeX: 0.075
   smoothTimeY: 0.1
   smoothTimeZ: 0.01
