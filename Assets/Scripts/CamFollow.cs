@@ -12,6 +12,7 @@ public class CamFollow : MonoBehaviour
 	public float smoothTimeY = 0.075F;
 	public float smoothTimeZ = 0.075F;
 	public float smoothRotX = 0.9f;
+	public float smoothRotY = 0.9f;
 	private float velocityX = 0;
 	private float velocityY = 0;
 	private float velocityZ = 0;
@@ -26,7 +27,8 @@ public class CamFollow : MonoBehaviour
 	public bool clampVerticalRotation = true;
 	public float MinimumX = -90F;
 	public float MaximumX = 90F;
-	public Quaternion camTargetRot;
+	public Quaternion camTargetRotX;
+	public Quaternion camTargetRotY;
 
 	private void Start()
 	{
@@ -34,17 +36,20 @@ public class CamFollow : MonoBehaviour
 		pivot = transform.Find("Pivot");
 		camTarget = GameObject.Find("CamTarget").transform;
 		camTarget.position = player.transform.position;
-		camTargetRot = pivot.localRotation;
+		camTargetRotY = transform.localRotation;
+		camTargetRotX = pivot.localRotation;
 	}
 
 	void LateUpdate()
 	{
-		transform.Rotate(Vector3.up * Time.deltaTime * yRotSpeed * Input.GetAxis("TurnCamY"));
+		camTargetRotY *= Quaternion.Euler(0f, Input.GetAxis("TurnCamY") * yRotSpeed * Time.deltaTime, 0f);
+		transform.localRotation = Quaternion.Slerp(transform.localRotation, camTargetRotY, smoothRotY);
+		//transform.Rotate(Vector3.up * Time.deltaTime * yRotSpeed * Input.GetAxis("TurnCamY"));
 		camTarget.rotation = transform.rotation;
-		camTargetRot *= Quaternion.Euler(Input.GetAxis("TurnCamX") * xRotSpeed * Time.deltaTime, 0f, 0f);
+		camTargetRotX *= Quaternion.Euler(Input.GetAxis("TurnCamX") * xRotSpeed * Time.deltaTime, 0f, 0f);
 		if(clampVerticalRotation)
-			camTargetRot = ClampRotationAroundXAxis(camTargetRot);
-		pivot.localRotation = camTargetRot;// Quaternion.Slerp(pivot.localRotation, camTargetRot, smoothRotX * Time.deltaTime);
+			camTargetRotX = ClampRotationAroundXAxis(camTargetRotX);
+		pivot.localRotation = Quaternion.Slerp(pivot.localRotation, camTargetRotX, smoothRotX);
 		//pivot.Rotate(pivot.right, Time.deltaTime * xRotSpeed * Input.GetAxis("TurnCamX"), Space.World);
 		localPos = camTarget.InverseTransformPoint(player.transform.position);
 		tempPos = camTarget.position;
