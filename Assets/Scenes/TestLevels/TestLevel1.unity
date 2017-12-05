@@ -402,7 +402,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4108101638132344, guid: 9761b9eeff7baee478f64af36c077d09, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 114523925957150920, guid: 9761b9eeff7baee478f64af36c077d09,
         type: 2}
@@ -434,7 +434,7 @@ Prefab:
     - target: {fileID: 114523925957150920, guid: 9761b9eeff7baee478f64af36c077d09,
         type: 2}
       propertyPath: smoothRotX
-      value: 0.9
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 114523925957150920, guid: 9761b9eeff7baee478f64af36c077d09,
         type: 2}
@@ -1133,7 +1133,7 @@ Prefab:
     - target: {fileID: 224722670745942010, guid: c84fa585951272f419587626bfaa8b71,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 397
+      value: 290
       objectReference: {fileID: 0}
     - target: {fileID: 224722670745942010, guid: c84fa585951272f419587626bfaa8b71,
         type: 2}
